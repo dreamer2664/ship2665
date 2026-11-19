@@ -54,6 +54,12 @@ export const CAMERA_VIEWS = {
     target: [0, 28.8, 195],
     desc: 'Bridge wings, Chadburn engine telegraphs, telemotor helm, binnacle'
   },
+  wheelhouse_navigating: {
+    name: 'Wheelhouse Telemotor & Standard Binnacle',
+    pos: [0, 28.3, 201.2],
+    target: [0, 28.1, 205.5],
+    desc: 'Brown\'s telemotor helm, Kelvin magnetic binnacle, chart table, chronometer'
+  },
   boat_deck_davits: {
     name: 'Boat Deck & Welin Davits',
     pos: [14.2, 29.2, 162],
@@ -98,17 +104,47 @@ export const CAMERA_VIEWS = {
     target: [0, 25.4, 73.5],
     desc: 'Honduras mahogany boiserie, mother-of-pearl inlay, Wilkinson fireplace'
   },
+  cafe_parisien: {
+    name: 'Café Parisien & Verandah Café',
+    pos: [7.0, 22.8, 62.0],
+    target: [9.0, 22.5, 68.5],
+    desc: 'B-Deck aft ivy trellis, French bistro wicker chairs, arched observation windows'
+  },
+  gymnasium_interior: {
+    name: 'Gymnasium & Exercisers',
+    pos: [10.5, 28.5, 137.5],
+    target: [7.8, 28.2, 143.0],
+    desc: 'Boat Deck gymnasium, stationary cycling machines with brass dials, rowing machine, electric camel, wall bars'
+  },
+  marconi_wireless_room: {
+    name: 'Marconi Wireless Telegraphy Station',
+    pos: [-2.2, 28.3, 153.5],
+    target: [-2.0, 28.1, 157.0],
+    desc: 'Marconi wireless operating desk, twin morse keys, magnetic detector, cork-lined Silent Room, motor-generator'
+  },
+  steerage_dining_saloon: {
+    name: 'Third Class (Steerage) Dining Saloon',
+    pos: [-5.0, 11.2, 192.5],
+    target: [0, 10.8, 198.0],
+    desc: 'Third Class dining saloon on F Deck, long pine trestle tables, benches, enamel iron bulkheads, piano'
+  },
+  scotland_road_passage: {
+    name: 'Scotland Road Working Passage',
+    pos: [-2.8, 13.5, 120.0],
+    target: [-2.8, 13.5, 138.0],
+    desc: 'E Deck port working passage (Scotland Road), overhead steam pipes, cable trays, bulkhead door arches'
+  },
+  passenger_lifts: {
+    name: 'First Class Passenger Lifts',
+    pos: [-1.5, 23.0, 163.0],
+    target: [-1.5, 21.0, 168.5],
+    desc: 'Triple First Class passenger lift shafts, wrought iron decorative cages, guide rails, hoisting cables'
+  },
   turkish_baths_pool: {
     name: 'Turkish Baths & Swimming Bath',
-    pos: [6.0, 12.0, 146.0],
-    target: [0, 10.5, 156.0],
+    pos: [10.5, 11.2, 150.0],
+    target: [6.5, 10.5, 156.0],
     desc: 'Moorish arabesque ceramic tiles, teak loungers, heated saltwater pool'
-  },
-  gymnasium_boat_deck: {
-    name: 'Gymnasium & Exercisers',
-    pos: [4.0, 29.8, 157.0],
-    target: [7.5, 29.5, 164.0],
-    desc: 'Electric horse, camel, cycling machines with dials, rowing machine'
   },
 
   // Propulsion Engineering Plant
@@ -120,8 +156,8 @@ export const CAMERA_VIEWS = {
   },
   reciprocating_engine_room: {
     name: 'Reciprocating Engine Room',
-    pos: [-5.5, 7.5, 52.0],
-    target: [0, 6.0, 64.0],
+    pos: [0, 6.2, 53.0],
+    target: [0, 8.0, 64.0],
     desc: 'Twin 4-crank triple expansion engines, 75in stroke, Stephenson link motion'
   },
   turbine_room: {
@@ -135,6 +171,12 @@ export const CAMERA_VIEWS = {
     pos: [0, 4.2, 18.0],
     target: [0, 3.2, 27.5],
     desc: 'Four 400 kW 100V DC steam dynamos, main switchboard distribution panels'
+  },
+  steering_gear_tiller: {
+    name: 'Steering Gear Flat & Quadrant Tiller',
+    pos: [2.5, 16.8, 18.0],
+    target: [0, 16.5, 13.0],
+    desc: 'D Deck aft steering gear flat, 23.5-inch rudder stock, spring-cushioned quadrant tiller, twin steam engines'
   },
 
   // Structural & Watertight Cutaways

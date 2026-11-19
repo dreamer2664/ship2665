@@ -295,5 +295,54 @@ export function createTitanicMaterials() {
     name: 'Welin_Davit_Steel'
   });
 
+  // 8. Period Interior Specialty Materials
+  materials.trellisGreen = new THREE.MeshStandardMaterial({
+    color: 0x24552e, // Café Parisien ivy trellis
+    roughness: 0.65,
+    metalness: 0.05,
+    side: THREE.DoubleSide,
+    name: 'Cafe_Parisien_Trellis'
+  });
+
+  materials.wickerChair = new THREE.MeshStandardMaterial({
+    color: 0xbfa36d, // Wicker bistro chairs
+    roughness: 0.78,
+    metalness: 0.02,
+    side: THREE.DoubleSide,
+    name: 'Wicker_Cane_Furniture'
+  });
+
+  materials.steeragePine = new THREE.MeshStandardMaterial({
+    color: 0xc4a36b, // 3rd Class pine dining tables
+    roughness: 0.68,
+    metalness: 0.05,
+    side: THREE.DoubleSide,
+    name: 'Steerage_Pine_Wood'
+  });
+
+  materials.enamelIron = new THREE.MeshStandardMaterial({
+    color: 0xdcdad5, // 3rd Class painted iron bulkheads
+    roughness: 0.45,
+    metalness: 0.42,
+    side: THREE.DoubleSide,
+    name: 'Steerage_Enamel_Iron'
+  });
+
+  materials.corkWall = new THREE.MeshStandardMaterial({
+    color: 0x6e4e2e, // Marconi Silent Room acoustic cork
+    roughness: 0.92,
+    metalness: 0.0,
+    side: THREE.DoubleSide,
+    name: 'Marconi_Silent_Cork'
+  });
+
+  materials.leatherBlack = new THREE.MeshStandardMaterial({
+    color: 0x18181a, // Gymnasium camel/horse saddle leather
+    roughness: 0.55,
+    metalness: 0.1,
+    side: THREE.DoubleSide,
+    name: 'Gymnasium_Saddle_Leather'
+  });
+
   return materials;
 }

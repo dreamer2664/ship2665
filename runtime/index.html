@@ -274,6 +274,22 @@
       </div>
     </div>
 
+    <!-- Interactive Mechanisms (Steering & Lifts) -->
+    <div class="hud-box">
+      <div class="hud-title">Interactive Mechanisms &amp; Controls</div>
+      <div style="display: flex; gap: 6px; align-items: center; margin-top: 4px;">
+        <button id="btn-helm-port" title="Steer Port (A / Left)">↶ Port Helm</button>
+        <button id="btn-helm-mid" title="Rudder Amidships (S)">Amidships</button>
+        <button id="btn-helm-stbd" title="Steer Starboard (D / Right)">↷ Stbd Helm</button>
+        <span id="hud-rudder" style="font-family: monospace; font-size: 11px; color: #5eead4; min-width: 80px;">Rudder: 0°</span>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center; margin-top: 6px;">
+        <span style="font-size: 10px; color: #dfb76c;">1st Class Lift:</span>
+        <button id="btn-lift-call" style="background:#1e3a5f;">🛗 Call Lift: <span id="hud-lift-deck">Boat Deck</span></button>
+        <button id="btn-doors-toggle" style="background:#1e3a5f;">🚪 Cabins: Open</button>
+      </div>
+    </div>
+
     <!-- Atmospheric & Sound Controls -->
     <div class="hud-box">
       <div class="hud-title">Environment &amp; Acoustics</div>

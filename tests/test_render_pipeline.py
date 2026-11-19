@@ -43,12 +43,14 @@ def test_final_renders_directory_and_manifest():
     required_views = [
         'port_bow', 'starboard_bow', 'broadside_port', 'broadside_starboard',
         'stern_propellers', 'aerial_three_quarter', 'waterline_low',
-        'bridge_navigating', 'boat_deck_davits', 'funnels_rigging',
-        'grand_staircase_dome', 'grand_staircase_clock', 'dining_saloon_1st',
-        'smoking_room_1st', 'turkish_baths_pool', 'boiler_room_6',
-        'reciprocating_engine_room', 'turbine_room', 'dynamo_room',
-        'watertight_doors_cutaway', 'longitudinal_cutaway',
-        'closeup_welin_davit', 'closeup_engine_valve_gear'
+        'bridge_navigating', 'wheelhouse_navigating', 'boat_deck_davits',
+        'funnels_rigging', 'grand_staircase_dome', 'grand_staircase_clock',
+        'dining_saloon_1st', 'smoking_room_1st', 'cafe_parisien',
+        'gymnasium_interior', 'marconi_wireless_room', 'steerage_dining_saloon',
+        'scotland_road_passage', 'passenger_lifts', 'turkish_baths_pool',
+        'boiler_room_6', 'reciprocating_engine_room', 'turbine_room',
+        'dynamo_room', 'steering_gear_tiller', 'watertight_doors_cutaway',
+        'longitudinal_cutaway', 'closeup_welin_davit', 'closeup_engine_valve_gear'
     ]
 
     for v in required_views:

@@ -1,161 +1,203 @@
 {
-  "generation": 2,
-  "timestamp": "2026-11-19T14:17:15.136Z",
+  "generation": 4,
+  "timestamp": "2026-11-19T15:11:23.170Z",
   "resolution": [
-    1280,
-    720
+    960,
+    540
   ],
-  "total_views": 25,
+  "total_views": 32,
   "views": [
     {
       "view_id": "port_bow",
       "file_name": "port_bow.png",
-      "file_size_bytes": 458285,
-      "rendered_at": "2026-11-19T14:15:06.813Z"
+      "file_size_bytes": 185793,
+      "rendered_at": "2026-11-19T15:09:37.216Z"
     },
     {
       "view_id": "starboard_bow",
       "file_name": "starboard_bow.png",
-      "file_size_bytes": 429656,
-      "rendered_at": "2026-11-19T14:15:09.015Z"
+      "file_size_bytes": 128284,
+      "rendered_at": "2026-11-19T15:09:38.741Z"
     },
     {
       "view_id": "broadside_port",
       "file_name": "broadside_port.png",
-      "file_size_bytes": 512679,
-      "rendered_at": "2026-11-19T14:15:11.040Z"
+      "file_size_bytes": 166005,
+      "rendered_at": "2026-11-19T15:09:39.852Z"
     },
     {
       "view_id": "broadside_starboard",
       "file_name": "broadside_starboard.png",
-      "file_size_bytes": 531048,
-      "rendered_at": "2026-11-19T14:15:12.795Z"
+      "file_size_bytes": 140754,
+      "rendered_at": "2026-11-19T15:09:40.949Z"
     },
     {
       "view_id": "stern_propellers",
       "file_name": "stern_propellers.png",
-      "file_size_bytes": 219546,
-      "rendered_at": "2026-11-19T14:15:16.022Z"
+      "file_size_bytes": 96881,
+      "rendered_at": "2026-11-19T15:09:44.003Z"
     },
     {
       "view_id": "aerial_three_quarter",
       "file_name": "aerial_three_quarter.png",
-      "file_size_bytes": 722471,
-      "rendered_at": "2026-11-19T14:15:19.670Z"
+      "file_size_bytes": 238976,
+      "rendered_at": "2026-11-19T15:09:45.667Z"
     },
     {
       "view_id": "waterline_low",
       "file_name": "waterline_low.png",
-      "file_size_bytes": 289187,
-      "rendered_at": "2026-11-19T14:15:22.929Z"
+      "file_size_bytes": 97913,
+      "rendered_at": "2026-11-19T15:09:48.213Z"
     },
     {
       "view_id": "bridge_navigating",
       "file_name": "bridge_navigating.png",
-      "file_size_bytes": 55462,
-      "rendered_at": "2026-11-19T14:15:26.000Z"
+      "file_size_bytes": 11386,
+      "rendered_at": "2026-11-19T15:09:50.009Z"
+    },
+    {
+      "view_id": "wheelhouse_navigating",
+      "file_name": "wheelhouse_navigating.png",
+      "file_size_bytes": 66201,
+      "rendered_at": "2026-11-19T15:09:51.007Z"
     },
     {
       "view_id": "boat_deck_davits",
       "file_name": "boat_deck_davits.png",
-      "file_size_bytes": 205041,
-      "rendered_at": "2026-11-19T14:15:31.820Z"
+      "file_size_bytes": 76013,
+      "rendered_at": "2026-11-19T15:09:54.024Z"
     },
     {
       "view_id": "funnels_rigging",
       "file_name": "funnels_rigging.png",
-      "file_size_bytes": 389372,
-      "rendered_at": "2026-11-19T14:15:36.682Z"
+      "file_size_bytes": 156815,
+      "rendered_at": "2026-11-19T15:09:56.634Z"
     },
     {
       "view_id": "crows_nest",
       "file_name": "crows_nest.png",
-      "file_size_bytes": 477351,
-      "rendered_at": "2026-11-19T14:15:41.172Z"
+      "file_size_bytes": 149610,
+      "rendered_at": "2026-11-19T15:09:57.112Z"
     },
     {
       "view_id": "grand_staircase_dome",
       "file_name": "grand_staircase_dome.png",
-      "file_size_bytes": 24244,
-      "rendered_at": "2026-11-19T14:15:43.399Z"
+      "file_size_bytes": 4050,
+      "rendered_at": "2026-11-19T15:09:59.639Z"
     },
     {
       "view_id": "grand_staircase_clock",
       "file_name": "grand_staircase_clock.png",
-      "file_size_bytes": 201617,
-      "rendered_at": "2026-11-19T14:15:49.380Z"
+      "file_size_bytes": 48349,
+      "rendered_at": "2026-11-19T15:10:04.885Z"
     },
     {
       "view_id": "dining_saloon_1st",
       "file_name": "dining_saloon_1st.png",
-      "file_size_bytes": 255329,
-      "rendered_at": "2026-11-19T14:15:57.883Z"
+      "file_size_bytes": 124640,
+      "rendered_at": "2026-11-19T15:10:11.050Z"
     },
     {
       "view_id": "smoking_room_1st",
       "file_name": "smoking_room_1st.png",
-      "file_size_bytes": 162699,
-      "rendered_at": "2026-11-19T14:16:03.989Z"
+      "file_size_bytes": 102899,
+      "rendered_at": "2026-11-19T15:10:15.392Z"
+    },
+    {
+      "view_id": "cafe_parisien",
+      "file_name": "cafe_parisien.png",
+      "file_size_bytes": 136923,
+      "rendered_at": "2026-11-19T15:10:20.766Z"
+    },
+    {
+      "view_id": "gymnasium_interior",
+      "file_name": "gymnasium_interior.png",
+      "file_size_bytes": 82204,
+      "rendered_at": "2026-11-19T15:10:26.369Z"
+    },
+    {
+      "view_id": "marconi_wireless_room",
+      "file_name": "marconi_wireless_room.png",
+      "file_size_bytes": 40971,
+      "rendered_at": "2026-11-19T15:10:32.580Z"
+    },
+    {
+      "view_id": "steerage_dining_saloon",
+      "file_name": "steerage_dining_saloon.png",
+      "file_size_bytes": 48990,
+      "rendered_at": "2026-11-19T15:10:33.956Z"
+    },
+    {
+      "view_id": "scotland_road_passage",
+      "file_name": "scotland_road_passage.png",
+      "file_size_bytes": 146672,
+      "rendered_at": "2026-11-19T15:10:39.506Z"
+    },
+    {
+      "view_id": "passenger_lifts",
+      "file_name": "passenger_lifts.png",
+      "file_size_bytes": 52678,
+      "rendered_at": "2026-11-19T15:10:42.153Z"
     },
     {
       "view_id": "turkish_baths_pool",
       "file_name": "turkish_baths_pool.png",
-      "file_size_bytes": 36856,
-      "rendered_at": "2026-11-19T14:16:09.583Z"
-    },
-    {
-      "view_id": "gymnasium_boat_deck",
-      "file_name": "gymnasium_boat_deck.png",
-      "file_size_bytes": 27403,
-      "rendered_at": "2026-11-19T14:16:17.489Z"
+      "file_size_bytes": 95063,
+      "rendered_at": "2026-11-19T15:10:46.906Z"
     },
     {
       "view_id": "boiler_room_6",
       "file_name": "boiler_room_6.png",
-      "file_size_bytes": 164228,
-      "rendered_at": "2026-11-19T14:16:24.774Z"
+      "file_size_bytes": 58191,
+      "rendered_at": "2026-11-19T15:10:52.635Z"
     },
     {
       "view_id": "reciprocating_engine_room",
       "file_name": "reciprocating_engine_room.png",
-      "file_size_bytes": 273247,
-      "rendered_at": "2026-11-19T14:16:33.556Z"
+      "file_size_bytes": 108146,
+      "rendered_at": "2026-11-19T15:10:58.229Z"
     },
     {
       "view_id": "turbine_room",
       "file_name": "turbine_room.png",
-      "file_size_bytes": 72012,
-      "rendered_at": "2026-11-19T14:16:41.695Z"
+      "file_size_bytes": 20998,
+      "rendered_at": "2026-11-19T15:11:03.108Z"
     },
     {
       "view_id": "dynamo_room",
       "file_name": "dynamo_room.png",
-      "file_size_bytes": 21669,
-      "rendered_at": "2026-11-19T14:16:52.324Z"
+      "file_size_bytes": 3436,
+      "rendered_at": "2026-11-19T15:11:11.119Z"
+    },
+    {
+      "view_id": "steering_gear_tiller",
+      "file_name": "steering_gear_tiller.png",
+      "file_size_bytes": 52005,
+      "rendered_at": "2026-11-19T15:11:12.393Z"
     },
     {
       "view_id": "watertight_doors_cutaway",
       "file_name": "watertight_doors_cutaway.png",
-      "file_size_bytes": 176933,
-      "rendered_at": "2026-11-19T14:17:00.409Z"
+      "file_size_bytes": 55336,
+      "rendered_at": "2026-11-19T15:11:13.989Z"
     },
     {
       "view_id": "longitudinal_cutaway",
       "file_name": "longitudinal_cutaway.png",
-      "file_size_bytes": 433999,
-      "rendered_at": "2026-11-19T14:17:02.861Z"
+      "file_size_bytes": 142341,
+      "rendered_at": "2026-11-19T15:11:15.612Z"
     },
     {
       "view_id": "closeup_welin_davit",
       "file_name": "closeup_welin_davit.png",
-      "file_size_bytes": 50763,
-      "rendered_at": "2026-11-19T14:17:09.255Z"
+      "file_size_bytes": 13436,
+      "rendered_at": "2026-11-19T15:11:22.338Z"
     },
     {
       "view_id": "closeup_engine_valve_gear",
       "file_name": "closeup_engine_valve_gear.png",
-      "file_size_bytes": 237946,
-      "rendered_at": "2026-11-19T14:17:14.989Z"
+      "file_size_bytes": 68205,
+      "rendered_at": "2026-11-19T15:11:23.057Z"
     }
   ]
 }

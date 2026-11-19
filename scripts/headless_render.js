@@ -20,6 +20,7 @@ const VIEWS_TO_RENDER = [
   'aerial_three_quarter',
   'waterline_low',
   'bridge_navigating',
+  'wheelhouse_navigating',
   'boat_deck_davits',
   'funnels_rigging',
   'crows_nest',
@@ -27,12 +28,18 @@ const VIEWS_TO_RENDER = [
   'grand_staircase_clock',
   'dining_saloon_1st',
   'smoking_room_1st',
+  'cafe_parisien',
+  'gymnasium_interior',
+  'marconi_wireless_room',
+  'steerage_dining_saloon',
+  'scotland_road_passage',
+  'passenger_lifts',
   'turkish_baths_pool',
-  'gymnasium_boat_deck',
   'boiler_room_6',
   'reciprocating_engine_room',
   'turbine_room',
   'dynamo_room',
+  'steering_gear_tiller',
   'watertight_doors_cutaway',
   'longitudinal_cutaway',
   'closeup_welin_davit',
@@ -54,36 +61,37 @@ const VIEWS_TO_RENDER = [
   });
 
   const page = await browser.newPage();
-  await page.setViewport({ width: 1280, height: 720 });
+  await page.setViewport({ width: 960, height: 540 });
 
-  const indexPath = 'file://' + path.resolve(__dirname, '../runtime/index.html');
-  await page.goto(indexPath, { waitUntil: 'load' });
+  const appUrl = 'http://127.0.0.1:8000/index.html';
+  await page.goto(appUrl, { waitUntil: 'load' });
 
   // Wait for 3D simulation ready
   await page.waitForFunction(() => window.TITANIC_SIM && window.TITANIC_SIM.ready, { timeout: 15000 });
-  await new Promise(r => setTimeout(r, 600));
+  await page.evaluate(() => {
+    window.isHeadless = true;
+    document.querySelectorAll('.top-header, .camera-panel, .bottom-hud').forEach(el => el.style.display = 'none');
+  });
+  await new Promise(r => setTimeout(r, 400));
 
   const manifestViews = [];
+  const canvasElement = await page.$('#canvas-container canvas');
 
   for (const viewId of VIEWS_TO_RENDER) {
     const isCutaway = (viewId === 'longitudinal_cutaway' || viewId === 'watertight_doors_cutaway');
     
     // Switch camera & cutaway mode and force frame render
-    const dataUrl = await page.evaluate((vId, cutaway) => {
+    await page.evaluate((vId, cutaway) => {
       if (cutaway !== window.TITANIC_SIM.cutawayMode) {
         const btn = document.getElementById('btn-cutaway');
         if (btn) btn.click();
       }
       window.setCameraView(vId);
-
-      const canvas = document.querySelector('canvas');
-      return canvas.toDataURL('image/png');
     }, viewId, isCutaway);
 
-    const base64Data = dataUrl.replace(/^data:image\/png;base64,/, '');
     const fileName = `${viewId}.png`;
     const filePath = path.join(outDir, fileName);
-    fs.writeFileSync(filePath, base64Data, 'base64');
+    await canvasElement.screenshot({ path: filePath });
 
     const stats = fs.statSync(filePath);
     console.log(`  ✓ Rendered ${viewId} (${(stats.size / 1024).toFixed(1)} KB)`);
@@ -101,7 +109,7 @@ const VIEWS_TO_RENDER = [
   const manifest = {
     generation: parseInt(genNum, 10),
     timestamp: new Date().toISOString(),
-    resolution: [1280, 720],
+    resolution: [960, 540],
     total_views: manifestViews.length,
     views: manifestViews
   };

@@ -23,8 +23,27 @@ window.TITANIC_SIM = {
   watertightClosed: false,
   cutawayMode: false,
   lightingMode: 'day',
+  // Steering Telemotor & Rudder Mechanics
+  targetRudderDeg: 0.0,
+  currentRudderDeg: 0.0,
+  // Passenger Elevator
+  elevatorDeckIndex: 5, // 0: E, 1: D, 2: C, 3: B, 4: A, 5: Boat Deck
+  elevatorTargetY: 14.9,
+  elevatorCurrentY: 14.9,
+  // Stateroom Doors
+  cabinDoorsOpen: true,
+  cabinDoorAngle: Math.PI / 2,
   ready: false
 };
+
+const ELEVATOR_DECKS = [
+  { name: 'E Deck', y: 0.0 },
+  { name: 'D Deck', y: 2.9 },
+  { name: 'C Deck', y: 6.1 },
+  { name: 'B Deck', y: 9.25 },
+  { name: 'A Deck', y: 12.0 },
+  { name: 'Boat Deck', y: 14.9 }
+];
 
 const app = {
   scene: null,
@@ -38,6 +57,7 @@ const app = {
   audio: null,
   dirLight: null,
   hemiLight: null,
+  steamJets: [],
   clock: new THREE.Clock()
 };
 
@@ -123,8 +143,12 @@ function init() {
   // 8. Procedural Audio Engine
   app.audio = new TitanicAudioEngine();
 
-  // 9. Setup UI HUD & Listeners
+  // 9. Whistle Steam Jets
+  initSteamJets();
+
+  // 10. Setup UI HUD & Listeners
   setupUI();
+  setupKeyboardControls();
 
   window.addEventListener('resize', onWindowResize);
 
@@ -133,6 +157,39 @@ function init() {
 
   // Animation Loop
   animate();
+}
+
+function initSteamJets() {
+  // Steam jets on Funnel 1 & 2 whistles
+  for (let z of [176.5, 149.0]) {
+    const jetGeom = new THREE.ConeGeometry(0.6, 3.5, 12);
+    const jetMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.0 });
+    const jet = new THREE.Mesh(jetGeom, jetMat);
+    jet.position.set(0.6, 51.5, z);
+    jet.rotation.x = -Math.PI / 4;
+    app.scene.add(jet);
+    app.steamJets.push(jet);
+  }
+}
+
+function triggerWhistle() {
+  if (app.audio) {
+    app.audio.init();
+    app.audio.setMuted(false);
+    app.audio.playSteamWhistle();
+  }
+  app.steamJets.forEach(jet => {
+    jet.material.opacity = 0.85;
+    setTimeout(() => {
+      let fade = setInterval(() => {
+        jet.material.opacity -= 0.08;
+        if (jet.material.opacity <= 0) {
+          jet.material.opacity = 0;
+          clearInterval(fade);
+        }
+      }, 50);
+    }, 1200);
+  });
 }
 
 function setupUI() {
@@ -190,6 +247,26 @@ function setupUI() {
     };
   }
 
+  // Steering helm buttons
+  const btnPort = document.getElementById('btn-helm-port');
+  if (btnPort) btnPort.onclick = () => steerRudder(-5);
+  const btnMid = document.getElementById('btn-helm-mid');
+  if (btnMid) btnMid.onclick = () => setRudder(0);
+  const btnStbd = document.getElementById('btn-helm-stbd');
+  if (btnStbd) btnStbd.onclick = () => steerRudder(5);
+
+  // Passenger Elevator button
+  const liftBtn = document.getElementById('btn-lift-call');
+  if (liftBtn) {
+    liftBtn.onclick = () => cycleElevatorDeck();
+  }
+
+  // Stateroom Doors toggle button
+  const doorsBtn = document.getElementById('btn-doors-toggle');
+  if (doorsBtn) {
+    doorsBtn.onclick = () => toggleCabinDoors();
+  }
+
   // Lighting Mode selector
   const lightSelect = document.getElementById('light-select');
   if (lightSelect) {
@@ -201,11 +278,7 @@ function setupUI() {
   // Whistle blast button
   const whistleBtn = document.getElementById('btn-whistle');
   if (whistleBtn) {
-    whistleBtn.onclick = () => {
-      app.audio.init();
-      app.audio.setMuted(false);
-      app.audio.playSteamWhistle();
-    };
+    whistleBtn.onclick = () => triggerWhistle();
   }
 
   // Audio unmute
@@ -217,6 +290,103 @@ function setupUI() {
       app.audio.setMuted(newMute);
       muteBtn.innerText = newMute ? '🔊 Sound: Off' : '🔊 Sound: On';
     };
+  }
+}
+
+function setupKeyboardControls() {
+  window.addEventListener('keydown', (e) => {
+    // Ignore input if focused in text field
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+    switch (e.code) {
+      case 'Digit1':
+      case 'Numpad1':
+        setEngineOrderByIndex(0); // Full Ahead
+        break;
+      case 'Digit2':
+      case 'Numpad2':
+        setEngineOrderByIndex(1); // Half Ahead
+        break;
+      case 'Digit3':
+      case 'Numpad3':
+        setEngineOrderByIndex(2); // Slow Ahead
+        break;
+      case 'Digit4':
+      case 'Numpad4':
+        setEngineOrderByIndex(3); // Stop
+        break;
+      case 'Digit5':
+      case 'Numpad5':
+        setEngineOrderByIndex(4); // Full Astern
+        break;
+      case 'ArrowLeft':
+      case 'KeyA':
+        steerRudder(-5);
+        break;
+      case 'ArrowRight':
+      case 'KeyD':
+        steerRudder(5);
+        break;
+      case 'KeyS':
+        setRudder(0);
+        break;
+      case 'KeyW':
+      case 'Space':
+        triggerWhistle();
+        break;
+      case 'KeyL':
+        cycleElevatorDeck();
+        break;
+      case 'KeyO':
+        toggleCabinDoors();
+        break;
+      case 'KeyX':
+        toggleCutaway();
+        break;
+      case 'KeyT':
+        toggleWatertightDoors();
+        break;
+    }
+  });
+}
+
+function setEngineOrderByIndex(idx) {
+  const btns = document.querySelectorAll('.btn-telegraph');
+  if (btns && btns[idx]) {
+    btns[idx].click();
+  }
+}
+
+function steerRudder(deltaDeg) {
+  const newDeg = Math.max(-35, Math.min(35, window.TITANIC_SIM.targetRudderDeg + deltaDeg));
+  setRudder(newDeg);
+}
+
+function setRudder(deg) {
+  window.TITANIC_SIM.targetRudderDeg = deg;
+  const el = document.getElementById('hud-rudder');
+  if (el) {
+    if (deg === 0) el.innerText = 'Rudder: Amidships';
+    else if (deg < 0) el.innerText = `Rudder: ${Math.abs(deg)}° Port`;
+    else el.innerText = `Rudder: ${deg}° Starboard`;
+  }
+}
+
+function cycleElevatorDeck() {
+  window.TITANIC_SIM.elevatorDeckIndex = (window.TITANIC_SIM.elevatorDeckIndex + 1) % ELEVATOR_DECKS.length;
+  const deck = ELEVATOR_DECKS[window.TITANIC_SIM.elevatorDeckIndex];
+  window.TITANIC_SIM.elevatorTargetY = deck.y;
+
+  const el = document.getElementById('hud-lift-deck');
+  if (el) el.innerText = deck.name;
+}
+
+function toggleCabinDoors() {
+  window.TITANIC_SIM.cabinDoorsOpen = !window.TITANIC_SIM.cabinDoorsOpen;
+  window.TITANIC_SIM.cabinDoorAngle = window.TITANIC_SIM.cabinDoorsOpen ? Math.PI / 2 : 0;
+  const btn = document.getElementById('btn-doors-toggle');
+  if (btn) {
+    btn.innerText = window.TITANIC_SIM.cabinDoorsOpen ? '🚪 Cabins: Open' : '🚪 Cabins: Closed';
   }
 }
 
@@ -338,8 +508,13 @@ function onWindowResize() {
 }
 
 function animate() {
-  requestAnimationFrame(animate);
+  if (!window.isHeadless) {
+    requestAnimationFrame(animate);
+  }
+  renderFrame();
+}
 
+function renderFrame() {
   const dt = Math.min(0.1, app.clock.getDelta());
   const elapsed = app.clock.getElapsedTime();
 
@@ -362,7 +537,29 @@ function animate() {
     app.ship.centrePropGroup.rotation.z += turbRad;
   }
 
-  // 3. Watertight Doors Gravity Drop Animation
+  // 3. Update Steering Telemotor, Rudder, and Quadrant Tiller
+  const rudderDiff = window.TITANIC_SIM.targetRudderDeg - window.TITANIC_SIM.currentRudderDeg;
+  window.TITANIC_SIM.currentRudderDeg += rudderDiff * Math.min(1.0, dt * 2.5); // Smooth hydraulic steering response
+  const rudderRad = (window.TITANIC_SIM.currentRudderDeg * Math.PI) / 180.0;
+
+  if (app.ship.rudderGroup) {
+    app.ship.rudderGroup.rotation.y = -rudderRad;
+  }
+  if (app.ship.wheelPivot) {
+    app.ship.wheelPivot.rotation.z = -rudderRad * 4.0; // 4 turns for full 35 deg helm
+  }
+  if (app.ship.quadrantTiller) {
+    app.ship.quadrantTiller.rotation.y = -rudderRad;
+  }
+
+  // 4. Update Passenger Elevator Car Position
+  const liftDiff = window.TITANIC_SIM.elevatorTargetY - window.TITANIC_SIM.elevatorCurrentY;
+  window.TITANIC_SIM.elevatorCurrentY += liftDiff * Math.min(1.0, dt * 1.8);
+  if (app.ship.elevatorCar) {
+    app.ship.elevatorCar.position.y = window.TITANIC_SIM.elevatorCurrentY;
+  }
+
+  // 5. Watertight Doors Gravity Drop Animation
   if (app.ship.animatedDoors) {
     const isClosing = window.TITANIC_SIM.watertightClosed;
     app.ship.animatedDoors.forEach((door) => {
@@ -372,17 +569,17 @@ function animate() {
     });
   }
 
-  // 4. Update Ocean & Buoyancy
+  // 6. Update Ocean & Buoyancy
   if (app.ocean) {
     app.ocean.update(dt, elapsed, window.TITANIC_SIM.speedKts, app.ship.shipGroup);
   }
 
-  // 5. Update Smoke System (Funnels 1, 2, 3 only!)
+  // 7. Update Smoke System (Funnels 1, 2, 3 only!)
   if (app.smoke) {
     app.smoke.update(dt, { boiler_firing_rate: window.TITANIC_SIM.boilerFiring }, window.TITANIC_SIM.speedKts);
   }
 
-  // 6. Update Audio Engine
+  // 8. Update Audio Engine
   if (app.audio) {
     app.audio.update({
       port_recip_rpm: window.TITANIC_SIM.recipRPM,
@@ -392,7 +589,10 @@ function animate() {
 
   if (app.controls) app.controls.update();
 
-  app.renderer.render(app.scene, app.camera);
+  if (app.renderer && app.scene && app.camera) {
+    app.renderer.render(app.scene, app.camera);
+  }
 }
+window.renderFrame = renderFrame;
 
 window.addEventListener('DOMContentLoaded', init);

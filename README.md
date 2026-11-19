@@ -3,7 +3,7 @@
 [![Maiden Voyage Configuration: 10 April 1912](https://img.shields.io/badge/Configuration-10_April_1912_Southampton-0a2540.svg)](evidence/evidence_ledger.md)
 [![Naval Architecture: Harland & Wolff Yard 401](https://img.shields.io/badge/Yard_401-Harland_%26_Wolff_Belfast-c59b27.svg)](models/ship_specs.json)
 [![Test Suite: 19 Passed](https://img.shields.io/badge/Pytest-19_Passed-brightgreen.svg)](tests/)
-[![Render Pipeline: Approved Final](https://img.shields.io/badge/Renders-25_Verified_Views-blue.svg)](renders/final/manifest.json)
+[![Render Pipeline: Approved Final](https://img.shields.io/badge/Renders-32_Verified_Views-blue.svg)](renders/final/manifest.json)
 
 An authentic, museum-grade, photorealistic 3D architectural reconstruction and mechanical engineering simulation of **RMS Titanic** in her exact maiden-voyage departure configuration from Southampton on **10 April 1912**.
 
@@ -117,12 +117,16 @@ The interactive 3D simulation is delivered via a self-contained, browser-based W
 | **Left Click + Drag** | Orbit / inspect view around focal target |
 | **Right Click + Drag** | Pan camera |
 | **Mouse Wheel** | Zoom in / out |
-| **Number Keys 1–7** | Chadburn Telegraph: `FULL ASTERN` (1) to `FULL AHEAD` (7) |
-| **Key D** | Toggle Bridge Watertight Door Switch (initiates alarm and gravity closure) |
-| **Key C** | Cycle Cutaway Modes (Solid Exterior $\rightarrow$ Longitudinal Cutaway $\rightarrow$ Watertight Bulkheads) |
+| **Number Keys 1–5** | Chadburn Telegraph: `Full Ahead` (1) to `Full Astern` (5) |
+| **Arrow Left / Key A** | Steer Helm Port ($5^\circ$ increments up to $-35^\circ$) |
+| **Arrow Right / Key D** | Steer Helm Starboard ($5^\circ$ increments up to $+35^\circ$) |
+| **Key S** | Helm Amidships ($0^\circ$ rudder) |
+| **Key L** | Cycle First Class Passenger Elevator between decks (Boat, A, B, C, D, E) |
+| **Key O** | Toggle Stateroom / Cabin Doors open and closed |
+| **Key W / Space** | Willett-Bruce Steam Whistle blast (with steam particle jet) |
+| **Key T** | Toggle Bridge Watertight Door Switch (initiates alarm and gravity closure) |
+| **Key X** | Toggle Cutaway X-Ray Mode (Solid Hull $\leftrightarrow$ Translucent Hull) |
 | **Key M** | Toggle Procedural Web Audio Engine |
-| **Key V** | Cycle Camera Presets (25 standardized views) |
-| **Key H** | Toggle Telemetry HUD Overlay |
 
 ---
 
@@ -147,33 +151,40 @@ The render pipeline in [`scripts/render_pipeline.py`](scripts/render_pipeline.py
 - **Generations > 10:** Retains strictly the newest 5 generations.
 - **Safety Invariant:** `renders/final/`, source files, and test logs are **never** deleted.
 
-### Standardized 25-View Inspection Matrix
-All 25 camera views are rendered at 1920×1080 (or headless test resolution):
+### Standardized 32-View Inspection Matrix
+All 32 camera views are rendered with full-frame unobstructed WebGL canvas captures:
 1. `port_bow`: Exterior three-quarter port bow showing stem, sheer, and anchors.
 2. `starboard_bow`: Exterior three-quarter starboard bow.
 3. `broadside_port`: Full profile port broadside showing sheer line and superstructure.
-4. `broadside_starboard`: Full profile starboard broadside.
+4. `broadside_starboard`: Full profile starboard broadside showing Café Parisien windows.
 5. `stern_propellers`: Stern counter, rudder blade, and wing/centre propellers.
 6. `aerial_three_quarter`: Elevated high-altitude isometric perspective.
 7. `waterline_low`: Low-angle perspective looking up at the bow from waterline.
-8. `bridge_navigating`: Navigating bridge, telemotor binnacle, and Chadburn telegraphs.
-9. `boat_deck_davits`: Boat deck looking aft through Welin quadrant davits.
-10. `funnels_rigging`: Looking up at raked funnels (1 in 12 rake) and wireless rigging.
-11. `grand_staircase_dome`: Wrought-iron and glass dome over the Grand Staircase.
-12. `grand_staircase_clock`: Carved oak clock wall pediment with "Honour and Glory Crowning Time".
-13. `dining_saloon_1st`: First Class Reception and Dining Saloon with white paneling and tables.
-14. `smoking_room_1st`: First Class Smoking Room with fireplace hearth and walnut paneling.
-15. `turkish_baths_pool`: Cooling room with Moorish arches and heated swimming bath.
-16. `boiler_room_6`: Boiler Room 6 forward showing double-ended boilers and furnace firebeds.
-17. `reciprocating_engine_room`: Reciprocating Engine Room showing 4-cylinder engine tops and crank pits.
-18. `turbine_room`: Low-pressure Parsons reaction turbine casing and condenser piping.
-19. `dynamo_room`: Four 400 kW electrical dynamos generating 100V DC current.
-20. `watertight_doors_cutaway`: Tank Top longitudinal slice showing all 12 lower sliding drop doors.
-21. `longitudinal_cutaway`: Centerline longitudinal cutaway revealing all 16 watertight compartments.
-22. `transverse_cutaway_boiler`: Transverse slice through Boiler Room 5 showing bunker arrangement.
-23. `transverse_cutaway_engine`: Transverse slice through Reciprocating Engine Room.
-24. `closeup_welin_davit`: Macro mechanical view of Welin quadrant worm gear and falls.
-25. `closeup_engine_valve_gear`: Stephenson link motion and eccentric rods on reciprocating engine.
+8. `bridge_navigating`: Navigating bridge wings, telemotor binnacle, and Chadburn telegraphs.
+9. `wheelhouse_navigating`: Brown telemotor steering helm, Kelvin magnetic binnacle, chart table.
+10. `boat_deck_davits`: Boat deck looking aft through Welin quadrant davits and lifeboats.
+11. `funnels_rigging`: Looking up at raked funnels (1 in 12 rake) and wireless rigging.
+12. `crows_nest`: 95ft lookout vantage looking forward over the bow stem.
+13. `grand_staircase_dome`: Wrought-iron and glass dome over the Grand Staircase.
+14. `grand_staircase_clock`: Carved oak clock wall pediment with "Honour and Glory Crowning Time".
+15. `dining_saloon_1st`: First Class Dining Saloon with white paneling and tables.
+16. `smoking_room_1st`: First Class Smoking Room with fireplace hearth and walnut paneling.
+17. `cafe_parisien`: B-Deck aft ivy trellis, French bistro wicker chairs, observation windows.
+18. `gymnasium_interior`: Boat Deck gymnasium with stationary cycling machines, dials, rowing machine, wall bars.
+19. `marconi_wireless_room`: Marconi operating desk, twin morse keys, magnetic detector, cork Silent Room.
+20. `steerage_dining_saloon`: Third Class dining saloon on F Deck, long pine trestle tables, benches, piano.
+21. `scotland_road_passage`: E Deck port working passage, overhead steam pipes, cable trays, bulkhead door arches.
+22. `passenger_lifts`: Triple First Class passenger lift shafts with ornate wrought-iron cages.
+23. `turkish_baths_pool`: Cooling room with Moorish tiles and heated saltwater swimming bath.
+24. `boiler_room_6`: Boiler Room 6 forward showing double-ended boilers and furnace firebeds.
+25. `reciprocating_engine_room`: Elevated catwalk platform between twin 4-crank triple expansion engines.
+26. `turbine_room`: Low-pressure Parsons reaction turbine casing and condenser piping.
+27. `dynamo_room`: Four 400 kW electrical dynamos generating 100V DC current.
+28. `steering_gear_tiller`: D Deck aft steering gear flat, 23.5-inch rudder stock, spring-cushioned quadrant tiller.
+29. `watertight_doors_cutaway`: Tank Top longitudinal slice showing lower sliding drop doors.
+30. `longitudinal_cutaway`: Centerline longitudinal cutaway revealing all 16 watertight compartments.
+31. `closeup_welin_davit`: Macro mechanical view of Welin quadrant worm gear and falls.
+32. `closeup_engine_valve_gear`: Stephenson link motion and eccentric rods on reciprocating engine.
 
 Approved final production renders are published to [`renders/final/`](renders/final/) with accompanied metadata manifest [`renders/final/manifest.json`](renders/final/manifest.json).
 
@@ -186,6 +197,11 @@ A formal Visual Quality Assurance defect tracking log is maintained in [`renders
 - **Defect QA-002 (Resolved):** Interior camera positions clipped through solid box volumes; resolved by constructing hollow inward-facing architectural panels.
 - **Defect QA-003 (Resolved):** Grand Staircase chandelier blocked direct sightline to clock carving; resolved by elevating chandelier fixture to Y=8.4 m.
 - **Defect QA-004 (Resolved):** Turkish Baths and 1st Class Dining Saloon lighting required warm localized fill; resolved with ambient fixtures and hearth point lights.
+- **Defect QA-005 (Resolved):** Passenger lift shaft at Z=168.5 partially occluded the Grand Staircase clock carving; resolved by relocating lift shafts forward to Z=176.5 abaft Bulkhead E in accordance with Harland & Wolff's forward entrance foyer plans.
+- **Defect QA-006 (Resolved):** Turkish Baths camera elevation Y=12.0 was set at E-Deck level viewing overhead pipes; resolved by lowering camera to Y=10.8 eye level on F Deck facing the tiled pool and Moorish walls.
+- **Defect QA-007 (Resolved):** Café Parisien lacked enclosing end bulkheads and featured simplified block furniture; resolved by constructing forward/aft white bulkheads, French wooden lattice trellis battens, and detailed wicker bistro chairs.
+- **Defect QA-008 (Resolved):** Scotland Road working passage lacked corridor side walls; resolved by constructing continuous port and starboard white enamel bulkheads with watertight door archways along the 8.5ft passage.
+- **Defect QA-009 (Resolved):** Reciprocating engine room was underexposed, obscuring the connecting rods and valve gear; resolved by constructing a middle catwalk platform with polished brass handrails, brass oiler manifolds, and dual-level floodlights.
 
 ---
 

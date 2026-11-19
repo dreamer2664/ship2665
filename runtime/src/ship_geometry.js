@@ -148,10 +148,13 @@ export function buildTitanicShip(materials) {
   keelMesh.position.set(0, 0.2, 126);
   hullGroup.add(keelMesh);
 
-  // Rudder
+  // Steerable Rudder
+  const rudderGroup = new THREE.Group();
+  rudderGroup.position.set(0, 8.2, -0.5);
   const rudderMesh = new THREE.Mesh(new THREE.BoxGeometry(0.8, 15.5, 4.5), materials.castIron);
-  rudderMesh.position.set(0, 8.2, -2.5);
-  hullGroup.add(rudderMesh);
+  rudderMesh.position.set(0, 0, -2.25);
+  rudderGroup.add(rudderMesh);
+  hullGroup.add(rudderGroup);
 
   // 3 Manganese Bronze Propellers
   const centrePropGroup = new THREE.Group();
@@ -631,12 +634,19 @@ export function buildTitanicShip(materials) {
     }
   }
 
-  const dinLight1 = new THREE.PointLight(0xfffaed, 3.5, 25);
-  dinLight1.position.set(0, 2.7, -6);
-  dinSaloonGroup.add(dinLight1);
-  const dinLight2 = new THREE.PointLight(0xfffaed, 3.5, 25);
-  dinLight2.position.set(0, 2.7, 6);
-  dinSaloonGroup.add(dinLight2);
+  // Forward & Aft Enclosing Walls for Saloon
+  for (let ez of [-15.0, 15.0]) {
+    const endWall = new THREE.Mesh(new THREE.PlaneGeometry(26.0, 3.0), materials.jacobeanWhite);
+    endWall.position.set(0, 1.5, ez);
+    if (ez > 0) endWall.rotation.y = Math.PI;
+    dinSaloonGroup.add(endWall);
+  }
+
+  for (let lz of [-10, -3, 4, 11]) {
+    const dLight = new THREE.PointLight(0xfffaed, 3.2, 22);
+    dLight.position.set(0, 2.5, lz);
+    dinSaloonGroup.add(dLight);
+  }
 
   interiorsGroup.add(dinSaloonGroup);
 
@@ -663,6 +673,17 @@ export function buildTitanicShip(materials) {
   const smAftWall = new THREE.Mesh(new THREE.PlaneGeometry(18.0, 2.8), materials.hondurasMahogany);
   smAftWall.position.set(0, 1.4, -9.0);
   smokeRoomGroup.add(smAftWall);
+
+  const smFwdWall = new THREE.Mesh(new THREE.PlaneGeometry(18.0, 2.8), materials.hondurasMahogany);
+  smFwdWall.position.set(0, 1.4, 9.0);
+  smFwdWall.rotation.y = Math.PI;
+  smokeRoomGroup.add(smFwdWall);
+
+  for (let lz of [-5, 2]) {
+    const sLight = new THREE.PointLight(0xffd8a8, 3.2, 18);
+    sLight.position.set(0, 2.2, lz);
+    smokeRoomGroup.add(sLight);
+  }
 
   // White Carrara Marble Fireplace
   const fireplace = new THREE.Mesh(new THREE.BoxGeometry(3.2, 2.1, 0.8), materials.marbleWhite);
@@ -695,33 +716,491 @@ export function buildTitanicShip(materials) {
   const turkishGroup = new THREE.Group();
   turkishGroup.position.set(6.5, 9.8, 156);
 
-  const tFloor = new THREE.Mesh(new THREE.PlaneGeometry(10.0, 16.0), materials.turkishTile);
+  const tFloor = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 16.0), materials.turkishTile);
   tFloor.rotation.x = -Math.PI / 2;
   turkishGroup.add(tFloor);
 
+  const tCeil = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 16.0), materials.jacobeanWhite);
+  tCeil.position.y = 2.6;
+  tCeil.rotation.x = Math.PI / 2;
+  turkishGroup.add(tCeil);
+
   const tWallEast = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 2.6), materials.turkishTile);
-  tWallEast.position.set(5.0, 1.3, 0);
+  tWallEast.position.set(7.5, 1.3, 0);
   tWallEast.rotation.y = -Math.PI / 2;
   turkishGroup.add(tWallEast);
 
+  const tWallWest = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 2.6), materials.turkishTile);
+  tWallWest.position.set(-7.5, 1.3, 0);
+  tWallWest.rotation.y = Math.PI / 2;
+  turkishGroup.add(tWallWest);
+
+  for (let z of [-8.0, 8.0]) {
+    const endWall = new THREE.Mesh(new THREE.PlaneGeometry(15.0, 2.6), materials.turkishTile);
+    endWall.position.set(0, 1.3, z);
+    if (z > 0) endWall.rotation.y = Math.PI;
+    turkishGroup.add(endWall);
+  }
+
   // Swimming Pool (30 ft x 14 ft = 9.1m x 4.2m)
   const poolBasin = new THREE.Mesh(new THREE.BoxGeometry(4.2, 1.8, 9.1), materials.poolTurquoiseTile);
-  poolBasin.position.set(-6.5, -0.6, 0);
+  poolBasin.position.set(-2.0, -0.6, 0);
   turkishGroup.add(poolBasin);
 
   const poolWater = new THREE.Mesh(new THREE.BoxGeometry(4.0, 0.1, 8.9), materials.glass);
-  poolWater.position.set(-6.5, 0.1, 0);
+  poolWater.position.set(-2.0, 0.1, 0);
   turkishGroup.add(poolWater);
 
   const poolLight = new THREE.PointLight(0x22beba, 4.2, 25);
-  poolLight.position.set(-6.5, 2.0, 0);
+  poolLight.position.set(-2.0, 2.0, 0);
   turkishGroup.add(poolLight);
 
-  const turkishRoomLight = new THREE.PointLight(0xffd880, 4.0, 20);
-  turkishRoomLight.position.set(1.5, 2.0, 0);
+  const turkishRoomLight = new THREE.PointLight(0xffe8a0, 4.5, 22);
+  turkishRoomLight.position.set(2.5, 2.2, 0);
   turkishGroup.add(turkishRoomLight);
 
   interiorsGroup.add(turkishGroup);
+
+  // E. Café Parisien & Verandah Café (B Deck Aft, Starboard, Z=68, X=8.5)
+  const cafeParisienGroup = new THREE.Group();
+  cafeParisienGroup.position.set(8.5, 21.65, 68);
+
+  // Floor with parquet/tile
+  const cpFloor = new THREE.Mesh(new THREE.PlaneGeometry(8.0, 18.0), materials.linoleumTile);
+  cpFloor.rotation.x = -Math.PI / 2;
+  cafeParisienGroup.add(cpFloor);
+
+  // Ceiling
+  const cpCeil = new THREE.Mesh(new THREE.PlaneGeometry(8.0, 18.0), materials.deckhouseWhite);
+  cpCeil.position.y = 2.75;
+  cpCeil.rotation.x = Math.PI / 2;
+  cafeParisienGroup.add(cpCeil);
+
+  // Inboard Trellis Wall with green ivy climbing pattern
+  const cpTrellisWall = new THREE.Mesh(new THREE.PlaneGeometry(18.0, 2.75), materials.trellisGreen);
+  cpTrellisWall.position.set(-4.0, 1.375, 0);
+  cpTrellisWall.rotation.y = Math.PI / 2;
+  cafeParisienGroup.add(cpTrellisWall);
+
+  // Wooden lattice trellis battens
+  for (let tz = -8.0; tz <= 8.0; tz += 1.2) {
+    const battenV = new THREE.Mesh(new THREE.BoxGeometry(0.04, 2.7, 0.04), materials.deckhouseWhite);
+    battenV.position.set(-3.95, 1.35, tz);
+    cafeParisienGroup.add(battenV);
+  }
+  for (let ty = 0.35; ty <= 2.65; ty += 0.45) {
+    const battenH = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.04, 17.5), materials.deckhouseWhite);
+    battenH.position.set(-3.95, ty, 0);
+    cafeParisienGroup.add(battenH);
+  }
+
+  // Forward & Aft Enclosing Walls
+  for (let ez of [-9.0, 9.0]) {
+    const endWall = new THREE.Mesh(new THREE.PlaneGeometry(8.0, 2.75), materials.deckhouseWhite);
+    endWall.position.set(0, 1.375, ez);
+    if (ez > 0) endWall.rotation.y = Math.PI;
+    cafeParisienGroup.add(endWall);
+  }
+
+  // Outboard Observation Windows looking out over Atlantic
+  for (let wz = -7.5; wz <= 7.5; wz += 2.5) {
+    const cpWin = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.8, 1.6), materials.glass);
+    cpWin.position.set(3.9, 1.5, wz);
+    cafeParisienGroup.add(cpWin);
+
+    const cpFrame = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.9, 1.7), materials.deckhouseWhite);
+    cpFrame.position.set(3.9, 1.5, wz);
+    cafeParisienGroup.add(cpFrame);
+  }
+
+  // Wicker bistro chairs and round café tables
+  for (let tz = -6.0; tz <= 6.0; tz += 3.0) {
+    const table = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.72, 16), materials.wickerChair);
+    table.position.set(0, 0.36, tz);
+    cafeParisienGroup.add(table);
+
+    // 4 Wicker chairs per table with proper backs & legs
+    for (let c = 0; c < 4; c++) {
+      const chairG = new THREE.Group();
+      const ang = (c * Math.PI) / 2;
+      chairG.position.set(1.0 * Math.cos(ang), 0, tz + 1.0 * Math.sin(ang));
+      chairG.rotation.y = -ang - Math.PI / 2;
+
+      const seat = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.05, 0.38), materials.wickerChair);
+      seat.position.y = 0.42;
+      chairG.add(seat);
+
+      const back = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.45, 0.05), materials.wickerChair);
+      back.position.set(0, 0.65, -0.16);
+      chairG.add(back);
+
+      for (let lx of [-0.16, 0.16]) {
+        for (let lz of [-0.14, 0.14]) {
+          const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.42, 8), materials.wickerChair);
+          leg.position.set(lx, 0.21, lz);
+          chairG.add(leg);
+        }
+      }
+      cafeParisienGroup.add(chairG);
+    }
+  }
+
+  for (let lz of [-5, 0, 5]) {
+    const cpLight = new THREE.PointLight(0xfff5e6, 3.2, 16);
+    cpLight.position.set(-1.0, 2.3, lz);
+    cafeParisienGroup.add(cpLight);
+  }
+
+  interiorsGroup.add(cafeParisienGroup);
+
+  // F. Gymnasium (Boat Deck Starboard, Z=142, X=9.0, Y=27.3)
+  const gymGroup = new THREE.Group();
+  gymGroup.position.set(9.0, 27.3, 142);
+
+  const gymFloor = new THREE.Mesh(new THREE.PlaneGeometry(7.5, 12.0), materials.teakDeck);
+  gymFloor.rotation.x = -Math.PI / 2;
+  gymGroup.add(gymFloor);
+
+  const gymCeil = new THREE.Mesh(new THREE.PlaneGeometry(7.5, 12.0), materials.deckhouseWhite);
+  gymCeil.position.y = 2.9;
+  gymCeil.rotation.x = Math.PI / 2;
+  gymGroup.add(gymCeil);
+
+  // Inboard Wall with Swedish wall bars (ribstalls)
+  const ribWall = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 2.9), materials.deckhouseWhite);
+  ribWall.position.set(-3.75, 1.45, 0);
+  ribWall.rotation.y = Math.PI / 2;
+  gymGroup.add(ribWall);
+
+  for (let r = 0.3; r <= 2.6; r += 0.25) {
+    const ribBar = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 6.0, 8), materials.teakHandrail);
+    ribBar.rotation.z = Math.PI / 2;
+    ribBar.position.set(-3.65, r, -2.0);
+    gymGroup.add(ribBar);
+  }
+
+  // Stationary cycling machines with large brass distance/speed dials
+  for (let cz of [1.5, 3.2]) {
+    const bikeG = new THREE.Group();
+    bikeG.position.set(1.5, 0, cz);
+
+    const frame = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9, 8), materials.castIron);
+    frame.position.y = 0.45;
+    bikeG.add(frame);
+
+    const saddle = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.1, 0.25), materials.leatherBlack);
+    saddle.position.set(0, 0.85, 0);
+    bikeG.add(saddle);
+
+    // Large brass distance meter dial
+    const dial = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.08, 16), materials.polishedBrass);
+    dial.rotation.x = Math.PI / 2;
+    dial.position.set(0, 1.15, 0.4);
+    bikeG.add(dial);
+
+    gymGroup.add(bikeG);
+  }
+
+  // Mechanical Rowing Machine with sliding seat
+  const rowG = new THREE.Group();
+  rowG.position.set(-1.0, 0, -2.5);
+  const rowTrack = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.12, 2.4), materials.castIron);
+  rowTrack.position.y = 0.06;
+  rowG.add(rowTrack);
+  const rowSeat = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.1, 0.35), materials.teakHandrail);
+  rowSeat.position.set(0, 0.18, 0);
+  rowG.add(rowSeat);
+  gymGroup.add(rowG);
+
+  // Electric Camel and Horse with leather saddles on articulated arms
+  const camelG = new THREE.Group();
+  camelG.position.set(1.5, 0, -2.5);
+  const camelBody = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.8, 1.3), materials.castIron);
+  camelBody.position.y = 0.6;
+  camelG.add(camelBody);
+  const camelSaddle = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.25, 0.6), materials.leatherBlack);
+  camelSaddle.position.set(0, 1.1, 0);
+  camelG.add(camelSaddle);
+  gymGroup.add(camelG);
+
+  // Suspended Punching Bag
+  const bagMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.9, 12), materials.leatherBurgundy);
+  bagMesh.position.set(-1.5, 1.8, 2.5);
+  gymGroup.add(bagMesh);
+
+  const gymLight = new THREE.PointLight(0xfffaf0, 3.8, 20);
+  gymLight.position.set(0, 2.6, 0);
+  gymGroup.add(gymLight);
+
+  interiorsGroup.add(gymGroup);
+
+  // G. Marconi Wireless Telegraphy Station & Silent Room (Boat Deck Officers' House, Z=157, X=-3.5, Y=27.3)
+  const marconiGroup = new THREE.Group();
+  marconiGroup.position.set(-3.5, 27.3, 157);
+
+  const mFloor = new THREE.Mesh(new THREE.PlaneGeometry(6.5, 7.5), materials.teakDeck);
+  mFloor.rotation.x = -Math.PI / 2;
+  marconiGroup.add(mFloor);
+
+  // Operator's Bench
+  const desk = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.76, 3.2), materials.hondurasMahogany);
+  desk.position.set(-2.0, 0.38, 0);
+  marconiGroup.add(desk);
+
+  // Twin Brass Morse Keys
+  for (let mz of [-0.6, 0.6]) {
+    const keyBase = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.04, 0.22), materials.castIron);
+    keyBase.position.set(-2.0, 0.78, mz);
+    marconiGroup.add(keyBase);
+    const keyArm = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.03, 0.18), materials.morseBrass);
+    keyArm.position.set(-2.0, 0.81, mz);
+    marconiGroup.add(keyArm);
+  }
+
+  // Marconi Magnetic Detector (iron wire band over twin pulleys)
+  const magDet = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.28, 0.6), materials.hondurasMahogany);
+  magDet.position.set(-2.0, 0.9, 0);
+  marconiGroup.add(magDet);
+  for (let pz of [-0.18, 0.18]) {
+    const pulley = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.04, 16), materials.morseBrass);
+    pulley.rotation.z = Math.PI / 2;
+    pulley.position.set(-1.82, 0.92, pz);
+    marconiGroup.add(pulley);
+  }
+
+  // Multiple 100-jar Leyden Jar capacitor racks
+  const leydenRack = new THREE.Mesh(new THREE.BoxGeometry(0.6, 1.4, 2.2), materials.teakHandrail);
+  leydenRack.position.set(-2.0, 1.2, 2.2);
+  marconiGroup.add(leydenRack);
+
+  // Silent Room acoustic cork wall enclosure
+  const corkWall = new THREE.Mesh(new THREE.BoxGeometry(3.0, 2.8, 0.2), materials.corkWall);
+  corkWall.position.set(1.5, 1.4, 0);
+  marconiGroup.add(corkWall);
+
+  // 5 kW Motor-Generator & Rotary Spark Discharger inside Silent Room
+  const motorGen = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 1.2, 16), materials.castIron);
+  motorGen.rotation.x = Math.PI / 2;
+  motorGen.position.set(2.2, 0.5, 0);
+  marconiGroup.add(motorGen);
+
+  const sparkCasing = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.35, 16), materials.morseBrass);
+  sparkCasing.rotation.z = Math.PI / 2;
+  sparkCasing.position.set(2.2, 0.5, 1.0);
+  marconiGroup.add(sparkCasing);
+
+  const marconiLight = new THREE.PointLight(0xffe4b5, 3.2, 18);
+  marconiLight.position.set(-1.0, 2.5, 0);
+  marconiGroup.add(marconiLight);
+
+  interiorsGroup.add(marconiGroup);
+
+  // H. Navigating Bridge Wheelhouse & Chart Room (Boat Deck Forward, Z=204, Y=27.3)
+  const bridgeWheelhouseGroup = new THREE.Group();
+  bridgeWheelhouseGroup.position.set(0, 27.3, 204);
+
+  const brWhFloor = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 7.0), materials.teakDeck);
+  brWhFloor.rotation.x = -Math.PI / 2;
+  bridgeWheelhouseGroup.add(brWhFloor);
+
+  // Brown's Telemotor Hydraulic Steering Column
+  const telemotorColumn = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.26, 1.15, 16), materials.polishedBrass);
+  telemotorColumn.position.set(0, 0.58, 1.5);
+  bridgeWheelhouseGroup.add(telemotorColumn);
+
+  // 5-foot Spoked Teak and Brass Ship's Wheel (Steering Pivot)
+  const wheelPivot = new THREE.Group();
+  wheelPivot.position.set(0, 1.1, 1.32);
+  const wheelRim = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.05, 8, 24), materials.teakHandrail);
+  wheelPivot.add(wheelRim);
+  const wheelHub = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 12), materials.polishedBrass);
+  wheelHub.rotation.x = Math.PI / 2;
+  wheelPivot.add(wheelHub);
+  for (let sp = 0; sp < 8; sp++) {
+    const spoke = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 1.5, 8), materials.teakHandrail);
+    spoke.rotation.z = (sp * Math.PI) / 4;
+    wheelPivot.add(spoke);
+  }
+  bridgeWheelhouseGroup.add(wheelPivot);
+
+  // Lord Kelvin Dry-Card Standard Magnetic Compass Binnacle
+  const binnacle = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 1.25, 16), materials.teakHandrail);
+  binnacle.position.set(0, 0.62, 2.6);
+  bridgeWheelhouseGroup.add(binnacle);
+  const compassTop = new THREE.Mesh(new THREE.SphereGeometry(0.28, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), materials.polishedBrass);
+  compassTop.position.set(0, 1.25, 2.6);
+  bridgeWheelhouseGroup.add(compassTop);
+  // Port & Starboard Soft Iron Corrector Spheres
+  for (let s of [-1, 1]) {
+    const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 12), materials.castIron);
+    sphere.position.set(s * 0.45, 1.1, 2.6);
+    bridgeWheelhouseGroup.add(sphere);
+  }
+
+  // Broad Oak Chart Table with Rolled Navigation Charts
+  const chartTable = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.85, 1.2), materials.hondurasMahogany);
+  chartTable.position.set(0, 0.42, -2.0);
+  bridgeWheelhouseGroup.add(chartTable);
+
+  const bridgeLight = new THREE.PointLight(0xfff0dd, 3.5, 20);
+  bridgeLight.position.set(0, 2.6, 0);
+  bridgeWheelhouseGroup.add(bridgeLight);
+
+  interiorsGroup.add(bridgeWheelhouseGroup);
+
+  // I. Third Class (Steerage) Dining Saloon (F Deck Forward, Z=198, Y=9.8)
+  const steerageGroup = new THREE.Group();
+  steerageGroup.position.set(0, 9.8, 198);
+
+  const steerFloor = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 16.0), materials.linoleumTile);
+  steerFloor.rotation.x = -Math.PI / 2;
+  steerageGroup.add(steerFloor);
+
+  // White enamel painted iron bulkheads
+  for (let s of [-1, 1]) {
+    const wall = new THREE.Mesh(new THREE.PlaneGeometry(16.0, 2.6), materials.enamelIron);
+    wall.position.set(s * 8.0, 1.3, 0);
+    wall.rotation.y = s * (-Math.PI / 2);
+    steerageGroup.add(wall);
+  }
+
+  // Long Pine Trestle Dining Tables and Fixed Continuous Benches
+  for (let tx of [-5.0, 0, 5.0]) {
+    for (let tz of [-4.5, 4.5]) {
+      const table = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.74, 5.5), materials.steeragePine);
+      table.position.set(tx, 0.37, tz);
+      steerageGroup.add(table);
+
+      // Benches along both sides
+      for (let bx of [-0.65, 0.65]) {
+        const bench = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.45, 5.5), materials.steeragePine);
+        bench.position.set(tx + bx, 0.22, tz);
+        steerageGroup.add(bench);
+      }
+    }
+  }
+
+  // Upright Piano in General Room
+  const piano = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.2, 0.6), materials.hondurasMahogany);
+  piano.position.set(-6.5, 0.6, -6.5);
+  steerageGroup.add(piano);
+
+  const steerLight1 = new THREE.PointLight(0xfffaea, 3.2, 22);
+  steerLight1.position.set(0, 2.4, -4.0);
+  steerageGroup.add(steerLight1);
+  const steerLight2 = new THREE.PointLight(0xfffaea, 3.2, 22);
+  steerLight2.position.set(0, 2.4, 4.0);
+  steerageGroup.add(steerLight2);
+
+  interiorsGroup.add(steerageGroup);
+
+  // J. Scotland Road Working Passage (E Deck Port Side, X=-2.8, running Z=85 to 180, Y=12.4)
+  const scotlandRoadGroup = new THREE.Group();
+  scotlandRoadGroup.position.set(-2.8, 12.4, 132.5);
+
+  const srFloor = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 95.0), materials.castIron);
+  srFloor.rotation.x = -Math.PI / 2;
+  scotlandRoadGroup.add(srFloor);
+
+  const srCeil = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 95.0), materials.enamelIron);
+  srCeil.position.y = 2.9;
+  srCeil.rotation.x = Math.PI / 2;
+  scotlandRoadGroup.add(srCeil);
+
+  // Corridor Side Walls (Port & Starboard)
+  for (let sx of [-1.3, 1.3]) {
+    const srWall = new THREE.Mesh(new THREE.PlaneGeometry(95.0, 2.9), materials.enamelIron);
+    srWall.position.set(sx, 1.45, 0);
+    srWall.rotation.y = sx > 0 ? -Math.PI / 2 : Math.PI / 2;
+    scotlandRoadGroup.add(srWall);
+  }
+
+  // Watertight Bulkhead Archways and Sliding Doors along passage
+  for (let bz = -35; bz <= 35; bz += 17.5) {
+    const arch = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.4, 0.25), materials.castIron);
+    arch.position.set(0, 2.7, bz);
+    scotlandRoadGroup.add(arch);
+
+    const doorFrame = new THREE.Mesh(new THREE.BoxGeometry(0.2, 2.5, 0.25), materials.castIron);
+    doorFrame.position.set(1.2, 1.25, bz);
+    scotlandRoadGroup.add(doorFrame);
+  }
+
+  // Overhead pipe racks (insulated steam pipes, freshwater, electrical conduits)
+  for (let px of [-0.8, -0.3, 0.3, 0.8]) {
+    const pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 95.0, 8), materials.copperPipe);
+    pipe.position.set(px, 2.65, 0);
+    pipe.rotation.x = Math.PI / 2;
+    scotlandRoadGroup.add(pipe);
+  }
+
+  for (let lz = -40; lz <= 40; lz += 15) {
+    const sLight = new THREE.PointLight(0xffeedd, 3.2, 18);
+    sLight.position.set(0, 2.4, lz);
+    scotlandRoadGroup.add(sLight);
+  }
+
+  interiorsGroup.add(scotlandRoadGroup);
+
+  // K. Triple First Class Passenger Lifts (Elevator Shafts & Moving Car)
+  // Located forward of Grand Staircase in the forward entrance foyer (Z=176.5)
+  const liftGroup = new THREE.Group();
+  liftGroup.position.set(-1.5, 12.4, 176.5); // Between E Deck (12.4) and Boat Deck (27.3)
+
+  // 3 Vertical Shaft Casings with Wrought Iron Scrollwork
+  for (let sx of [-1.8, 0, 1.8]) {
+    const shaftFrame = new THREE.Mesh(new THREE.BoxGeometry(1.6, 15.0, 1.6), materials.wroughtIron);
+    shaftFrame.position.set(sx, 7.5, 0);
+    liftGroup.add(shaftFrame);
+  }
+
+  // Interactive Elevator Car (moves vertically between Y=0 and Y=14.9 relative to liftGroup)
+  const elevatorCar = new THREE.Group();
+  elevatorCar.position.set(0, 0, 0);
+
+  const carFloor = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.1, 1.5), materials.hondurasMahogany);
+  elevatorCar.add(carFloor);
+  const carCeil = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.1, 1.5), materials.jacobeanWhite);
+  carCeil.position.y = 2.4;
+  elevatorCar.add(carCeil);
+  const carCage = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.4, 1.5), materials.wroughtIron);
+  carCage.position.y = 1.2;
+  elevatorCar.add(carCage);
+
+  const carLight = new THREE.PointLight(0xfffaec, 2.5, 8);
+  carLight.position.set(0, 2.2, 0);
+  elevatorCar.add(carLight);
+
+  liftGroup.add(elevatorCar);
+  interiorsGroup.add(liftGroup);
+
+  // L. Steering Gear Room & Tiller Flat (D Deck Aft, Z=14, Y=15.3)
+  const steeringRoomGroup = new THREE.Group();
+  steeringRoomGroup.position.set(0, 15.3, 14.0);
+
+  // Solid Forged Steel Rudder Stock (23.5-inch diameter)
+  const rudderStock = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 3.2, 16), materials.castIron);
+  rudderStock.position.set(0, 1.6, -1.5);
+  steeringRoomGroup.add(rudderStock);
+
+  // Massive Spring-Cushioned Quadrant Tiller with heavy spiral springs
+  const quadrantTiller = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.35, 16, 1, false, -Math.PI / 3, (2 * Math.PI) / 3), materials.castIron);
+  quadrantTiller.rotation.x = Math.PI / 2;
+  quadrantTiller.position.set(0, 2.2, -1.5);
+  steeringRoomGroup.add(quadrantTiller);
+
+  // Twin Harland & Wolff Steam Steering Engines
+  for (let s of [-1, 1]) {
+    const stEng = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.8, 2.2), materials.castIron);
+    stEng.position.set(s * 2.8, 0.9, 0.5);
+    steeringRoomGroup.add(stEng);
+  }
+
+  const stLight = new THREE.PointLight(0xffe2b8, 3.0, 18);
+  stLight.position.set(0, 2.6, 0);
+  steeringRoomGroup.add(stLight);
+
+  interiorsGroup.add(steeringRoomGroup);
 
   // -------------------------------------------------------------
   // 7. PROPULSION ENGINEERING PLANT
@@ -811,6 +1290,11 @@ export function buildTitanicShip(materials) {
       const rodMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 6.5, 8), materials.polishedSteel);
       rodMesh.position.set(0, 5.5, c.z);
       engG.add(rodMesh);
+
+      // Polished brass oil cups and lubrication manifold
+      const oilBox = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.4, 0.3), materials.polishedBrass);
+      oilBox.position.set(0, 8.2, c.z + (isStarboard ? -1.1 : 1.1));
+      engG.add(oilBox);
     });
 
     return engG;
@@ -821,9 +1305,26 @@ export function buildTitanicShip(materials) {
   machineryGroup.add(stbdEng);
   machineryGroup.add(portEng);
 
-  const engLight = new THREE.PointLight(0xfffaed, 4.0, 35);
-  engLight.position.set(0, 8.0, 63.5);
-  machineryGroup.add(engLight);
+  // Catwalk grating platform between port & starboard engines
+  const catwalk = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.12, 17.5), materials.castIron);
+  catwalk.position.set(0, 5.4, 63.5);
+  machineryGroup.add(catwalk);
+
+  for (let sx of [-1.05, 1.05]) {
+    const rail = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 17.5, 8), materials.polishedBrass);
+    rail.position.set(sx, 6.4, 63.5);
+    rail.rotation.x = Math.PI / 2;
+    machineryGroup.add(rail);
+  }
+
+  // Dual-level Engine Room Floodlights
+  const engLight1 = new THREE.PointLight(0xfffaed, 4.5, 45);
+  engLight1.position.set(0, 11.5, 63.5);
+  machineryGroup.add(engLight1);
+
+  const engLight2 = new THREE.PointLight(0xffecd0, 4.0, 35);
+  engLight2.position.set(0, 5.2, 63.5);
+  machineryGroup.add(engLight2);
 
   // C. Parsons Turbine Engine Room
   const turbineGroup = new THREE.Group();
@@ -884,6 +1385,10 @@ export function buildTitanicShip(materials) {
     centrePropGroup,
     portPropGroup,
     stbdPropGroup,
-    recipEnginePivots
+    recipEnginePivots,
+    rudderGroup,
+    wheelPivot,
+    elevatorCar,
+    quadrantTiller
   };
 }

@@ -214,5 +214,68 @@
     "confidence": "High",
     "proxy_type": "Titanic-specific",
     "unresolved_questions": "None."
+  },
+  {
+    "feature": "Café Parisien & Verandah Café",
+    "documented_value": "First Class French bistro on B Deck starboard aft; fitted with climbing ivy on white wooden trellis, wicker armchairs, round tables, and large rectangular observation windows overlooking the sea.",
+    "source": "H&W Yard 401 General Arrangement Plan & Father Browne April 1912 photographs",
+    "source_date": "1912-04-10",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "Unique to Titanic in April 1912; Olympic received a similar café only in her late 1912/1913 refit."
+  },
+  {
+    "feature": "Boat Deck Gymnasium",
+    "documented_value": "Starboard side Boat Deck abaft second funnel casing; equipped with electric camel, electric horse, two stationary cycling machines with mileage dials, rowing machine, wall bars, and punching bag.",
+    "source": "The Shipbuilder (Midsummer 1911) & British Inquiry (botRepAccomo.php)",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None. Photographed by Father Browne on 11 April 1912 showing passengers and physical instructor Thomas McCawley."
+  },
+  {
+    "feature": "Navigating Bridge Wheelhouse & Brown's Telemotor",
+    "documented_value": "Enclosed teak wheelhouse with brass drop windows; Brown's hydraulic telemotor steering column with 5-foot teak/brass steering wheel; Kelvin dry-card magnetic compass binnacle with soft-iron quadrantal spheres.",
+    "source": "British Inquiry (botRepTitanic.php) & Brown Brothers & Co. Telemotor Manual (1910)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Third Class (Steerage) Dining Saloon & General Room",
+    "documented_value": "F Deck forward (Bulkheads C to D); white enamel painted iron bulkheads with exposed overhead deck beams and rivets; long pine dining trestle tables with fixed wooden benches; upright piano in general room.",
+    "source": "1912 British Inquiry (botRepAccomo.php) & H&W Yard 401 accommodation plans",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Scotland Road Working Passage",
+    "documented_value": "8.5-foot wide continuous crew thoroughfare along the port side of E Deck running from Bulkhead E aft to Bulkhead N; carries main insulated steam runs, freshwater mains, and electrical cable trays.",
+    "source": "1912 British Inquiry crew testimony & H&W General Arrangement",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "First Class Passenger Lifts (Elevators)",
+    "documented_value": "Three electric passenger elevators situated in the forward entrance foyer abaft Bulkhead E, serving Boat Deck, A, B, C, D, and E decks; ornate wrought-iron and bronze scrollwork cages.",
+    "source": "1912 British Inquiry (botRepElec.php) & Waygood & Otis Contract Plans",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Steam Steering Gear & Quadrant Tiller",
+    "documented_value": "D Deck aft steering flat; duplicate 3-cylinder steam steering engines; massive spring-cushioned quadrant tiller with helical shock-absorbing springs; 23.5-inch forged steel rudder stock.",
+    "source": "1912 British Inquiry (botRepMach.php) & H&W Yard 401 machinery drawings",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
   }
 ]
