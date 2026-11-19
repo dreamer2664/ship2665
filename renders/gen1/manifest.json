@@ -1,0 +1,161 @@
+{
+  "generation": 1,
+  "timestamp": "2026-11-19T14:13:45.313Z",
+  "resolution": [
+    1280,
+    720
+  ],
+  "total_views": 25,
+  "views": [
+    {
+      "view_id": "port_bow",
+      "file_name": "port_bow.png",
+      "file_size_bytes": 453739,
+      "rendered_at": "2026-11-19T14:11:36.806Z"
+    },
+    {
+      "view_id": "starboard_bow",
+      "file_name": "starboard_bow.png",
+      "file_size_bytes": 439237,
+      "rendered_at": "2026-11-19T14:11:39.138Z"
+    },
+    {
+      "view_id": "broadside_port",
+      "file_name": "broadside_port.png",
+      "file_size_bytes": 508703,
+      "rendered_at": "2026-11-19T14:11:41.148Z"
+    },
+    {
+      "view_id": "broadside_starboard",
+      "file_name": "broadside_starboard.png",
+      "file_size_bytes": 543961,
+      "rendered_at": "2026-11-19T14:11:42.920Z"
+    },
+    {
+      "view_id": "stern_propellers",
+      "file_name": "stern_propellers.png",
+      "file_size_bytes": 247892,
+      "rendered_at": "2026-11-19T14:11:46.137Z"
+    },
+    {
+      "view_id": "aerial_three_quarter",
+      "file_name": "aerial_three_quarter.png",
+      "file_size_bytes": 714216,
+      "rendered_at": "2026-11-19T14:11:49.760Z"
+    },
+    {
+      "view_id": "waterline_low",
+      "file_name": "waterline_low.png",
+      "file_size_bytes": 287409,
+      "rendered_at": "2026-11-19T14:11:54.334Z"
+    },
+    {
+      "view_id": "bridge_navigating",
+      "file_name": "bridge_navigating.png",
+      "file_size_bytes": 35056,
+      "rendered_at": "2026-11-19T14:11:57.628Z"
+    },
+    {
+      "view_id": "boat_deck_davits",
+      "file_name": "boat_deck_davits.png",
+      "file_size_bytes": 231400,
+      "rendered_at": "2026-11-19T14:12:03.144Z"
+    },
+    {
+      "view_id": "funnels_rigging",
+      "file_name": "funnels_rigging.png",
+      "file_size_bytes": 394013,
+      "rendered_at": "2026-11-19T14:12:08.174Z"
+    },
+    {
+      "view_id": "crows_nest",
+      "file_name": "crows_nest.png",
+      "file_size_bytes": 529615,
+      "rendered_at": "2026-11-19T14:12:10.424Z"
+    },
+    {
+      "view_id": "grand_staircase_dome",
+      "file_name": "grand_staircase_dome.png",
+      "file_size_bytes": 24027,
+      "rendered_at": "2026-11-19T14:12:12.863Z"
+    },
+    {
+      "view_id": "grand_staircase_clock",
+      "file_name": "grand_staircase_clock.png",
+      "file_size_bytes": 203528,
+      "rendered_at": "2026-11-19T14:12:18.664Z"
+    },
+    {
+      "view_id": "dining_saloon_1st",
+      "file_name": "dining_saloon_1st.png",
+      "file_size_bytes": 286154,
+      "rendered_at": "2026-11-19T14:12:27.097Z"
+    },
+    {
+      "view_id": "smoking_room_1st",
+      "file_name": "smoking_room_1st.png",
+      "file_size_bytes": 163578,
+      "rendered_at": "2026-11-19T14:12:33.518Z"
+    },
+    {
+      "view_id": "turkish_baths_pool",
+      "file_name": "turkish_baths_pool.png",
+      "file_size_bytes": 36606,
+      "rendered_at": "2026-11-19T14:12:40.517Z"
+    },
+    {
+      "view_id": "gymnasium_boat_deck",
+      "file_name": "gymnasium_boat_deck.png",
+      "file_size_bytes": 27393,
+      "rendered_at": "2026-11-19T14:12:48.212Z"
+    },
+    {
+      "view_id": "boiler_room_6",
+      "file_name": "boiler_room_6.png",
+      "file_size_bytes": 163640,
+      "rendered_at": "2026-11-19T14:12:55.319Z"
+    },
+    {
+      "view_id": "reciprocating_engine_room",
+      "file_name": "reciprocating_engine_room.png",
+      "file_size_bytes": 281927,
+      "rendered_at": "2026-11-19T14:13:03.806Z"
+    },
+    {
+      "view_id": "turbine_room",
+      "file_name": "turbine_room.png",
+      "file_size_bytes": 72844,
+      "rendered_at": "2026-11-19T14:13:11.793Z"
+    },
+    {
+      "view_id": "dynamo_room",
+      "file_name": "dynamo_room.png",
+      "file_size_bytes": 21662,
+      "rendered_at": "2026-11-19T14:13:21.970Z"
+    },
+    {
+      "view_id": "watertight_doors_cutaway",
+      "file_name": "watertight_doors_cutaway.png",
+      "file_size_bytes": 180482,
+      "rendered_at": "2026-11-19T14:13:29.550Z"
+    },
+    {
+      "view_id": "longitudinal_cutaway",
+      "file_name": "longitudinal_cutaway.png",
+      "file_size_bytes": 421881,
+      "rendered_at": "2026-11-19T14:13:32.196Z"
+    },
+    {
+      "view_id": "closeup_welin_davit",
+      "file_name": "closeup_welin_davit.png",
+      "file_size_bytes": 54018,
+      "rendered_at": "2026-11-19T14:13:39.030Z"
+    },
+    {
+      "view_id": "closeup_engine_valve_gear",
+      "file_name": "closeup_engine_valve_gear.png",
+      "file_size_bytes": 241776,
+      "rendered_at": "2026-11-19T14:13:45.173Z"
+    }
+  ]
+}

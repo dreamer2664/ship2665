@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT SHIP2665 — RMS TITANIC (1912 Southampton Maiden Voyage)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #0d131a;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #e2d9c8;
+    }
+    #canvas-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Top Archival Header */
+    .top-header {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      z-index: 10;
+      background: rgba(13, 19, 26, 0.88);
+      border: 1px solid #c5a059;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      padding: 12px 20px;
+      border-radius: 4px;
+      pointer-events: auto;
+    }
+    .top-header h1 {
+      font-size: 19px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #dfb76c;
+      margin-bottom: 3px;
+    }
+    .top-header p {
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #a4b3c6;
+    }
+
+    /* Floating Camera Selector */
+    .camera-panel {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      z-index: 10;
+      background: rgba(13, 19, 26, 0.88);
+      border: 1px solid #c5a059;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      padding: 12px 18px;
+      border-radius: 4px;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 320px;
+    }
+    .camera-panel label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #dfb76c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    select, button {
+      background: #182330;
+      color: #e2d9c8;
+      border: 1px solid #556b82;
+      padding: 6px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+    select:hover, button:hover {
+      border-color: #dfb76c;
+    }
+    .camera-desc {
+      font-size: 11px;
+      color: #8fa2b8;
+      font-style: italic;
+      line-height: 1.4;
+      margin-top: 2px;
+      min-height: 28px;
+    }
+
+    /* Bottom Engineering HUD */
+    .bottom-hud {
+      position: absolute;
+      bottom: 14px;
+      left: 18px;
+      right: 18px;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+    }
+    .hud-box {
+      background: rgba(13, 19, 26, 0.90);
+      border: 1px solid #c5a059;
+      border-radius: 4px;
+      padding: 10px 16px;
+      pointer-events: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Chadburn Telegraph Box */
+    .telegraph-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .hud-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #dfb76c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin-bottom: 2px;
+    }
+    .telegraph-buttons {
+      display: flex;
+      gap: 5px;
+    }
+    .btn-telegraph {
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .btn-telegraph.active {
+      background: #dfb76c;
+      color: #0b1118;
+      border-color: #dfb76c;
+    }
+
+    /* Telemetry Metrics */
+    .metrics-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .metric-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: #7b8ea3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .metric-val {
+      font-size: 15px;
+      font-weight: bold;
+      color: #5eead4;
+      font-family: monospace;
+    }
+
+    /* Bulkhead Watertight Board */
+    .bulkhead-board {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .bh-indicator {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      background-color: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: #000;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+
+    .toggles-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <!-- Top Header -->
+  <div class="top-header">
+    <h1>RMS Titanic &bull; H&amp;W Yard No. 401</h1>
+    <p>Maiden Voyage Configuration &bull; Departing Southampton &bull; 10 April 1912</p>
+  </div>
+
+  <!-- Camera Preset Controls -->
+  <div class="camera-panel">
+    <label for="camera-select">Navigation / Inspection Camera</label>
+    <select id="camera-select"></select>
+    <div class="camera-desc" id="camera-desc">Port Bow Quarter: Fine entrance lines, flared stem, port bower anchor, White Star livery</div>
+  </div>
+
+  <!-- Bottom Engineering HUD -->
+  <div class="bottom-hud">
+    <!-- Chadburn Telegraph & Propulsion -->
+    <div class="hud-box telegraph-box">
+      <div class="hud-title">Engine Order Telegraph (Chadburn)</div>
+      <div class="telegraph-buttons" id="telegraph-controls"></div>
+      <div class="metrics-row">
+        <div class="metric-item">
+          <span class="metric-label">Ship Speed</span>
+          <span class="metric-val" id="hud-speed">21.5 kts</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Recip. Engines</span>
+          <span class="metric-val" id="hud-recip">75 RPM</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Parsons Turbine</span>
+          <span class="metric-val" id="hud-turb">165 RPM</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Propulsion Output</span>
+          <span class="metric-val" id="hud-power">46,000 HP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Watertight Subdivisions & Safety -->
+    <div class="hud-box">
+      <div class="hud-title">15 Transverse Watertight Bulkheads (A through P)</div>
+      <div class="bulkhead-board">
+        <div class="bh-indicator" title="Bulkhead A">A</div>
+        <div class="bh-indicator" title="Bulkhead B">B</div>
+        <div class="bh-indicator" title="Bulkhead C">C</div>
+        <div class="bh-indicator" title="Bulkhead D (BR6)">D</div>
+        <div class="bh-indicator" title="Bulkhead E (BR5)">E</div>
+        <div class="bh-indicator" title="Bulkhead F (BR4)">F</div>
+        <div class="bh-indicator" title="Bulkhead G (BR3)">G</div>
+        <div class="bh-indicator" title="Bulkhead H (BR2)">H</div>
+        <div class="bh-indicator" title="Bulkhead J (BR1)">J</div>
+        <div class="bh-indicator" title="Bulkhead K (Recip Eng)">K</div>
+        <div class="bh-indicator" title="Bulkhead L (Turbine)">L</div>
+        <div class="bh-indicator" title="Bulkhead M (Dynamos)">M</div>
+        <div class="bh-indicator" title="Bulkhead N (Hold 4)">N</div>
+        <div class="bh-indicator" title="Bulkhead O (Hold 5)">O</div>
+        <div class="bh-indicator" title="Bulkhead P (Afterpeak)">P</div>
+      </div>
+      <div class="toggles-row">
+        <button id="btn-watertight" style="background:#1e3a5f;">🛡️ Doors: Open (Bridge)</button>
+        <button id="btn-cutaway" style="background:#1e3a5f;">👁️ Hull: Solid Plating</button>
+      </div>
+    </div>
+
+    <!-- Atmospheric & Sound Controls -->
+    <div class="hud-box">
+      <div class="hud-title">Environment &amp; Acoustics</div>
+      <div style="display: flex; gap: 6px; margin-top: 4px;">
+        <select id="light-select">
+          <option value="day">April 1912 Southampton Day</option>
+          <option value="sunset">Solent Golden Hour Sunset</option>
+          <option value="night">North Atlantic Starry Night</option>
+        </select>
+        <button id="btn-whistle" style="background:#b45309;">🎺 Steam Whistle</button>
+        <button id="btn-sound">🔊 Sound: Off</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bundle script built with esbuild -->
+  <script src="./bundle.js"></script>
+</body>
+</html>

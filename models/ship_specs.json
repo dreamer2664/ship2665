@@ -1,0 +1,557 @@
+{
+  "ship_name": "RMS Titanic",
+  "builder": "Harland and Wolff, Queen Island, Belfast",
+  "yard_number": 401,
+  "configuration_date": "1912-04-10 (Maiden Voyage Southampton Departure)",
+  "dimensions": {
+    "length_overall_m": 269.06,
+    "length_between_perpendiculars_m": 259.08,
+    "registered_length_m": 259.84,
+    "extreme_breadth_m": 28.19,
+    "moulded_breadth_m": 28.04,
+    "design_draught_m": 10.54,
+    "full_load_displacement_tons": 52310,
+    "gross_register_tonnage": 46328,
+    "net_register_tonnage": 21831
+  },
+  "deck_elevations": {
+    "Keel": 0.0,
+    "TankTop": 1.6,
+    "Orlop": 4.5,
+    "G_Deck": 7.2,
+    "F_Deck": 9.8,
+    "E_Deck": 12.4,
+    "D_Deck": 15.3,
+    "C_Deck": 18.5,
+    "B_Deck": 21.65,
+    "A_Deck": 24.4,
+    "Boat_Deck": 27.3,
+    "Officers_Roof": 29.8,
+    "Funnel_Tops": 53.34,
+    "Fore_Mast_Truck": 63.4,
+    "Main_Mast_Truck": 61.57,
+    "Crows_Nest": 29.0
+  },
+  "bulkheads": [
+    {
+      "id": "A",
+      "name": "Collision Bulkhead A",
+      "z": 245.0,
+      "extends_to": "C_Deck",
+      "y_top": 18.5,
+      "doors_tt": 0,
+      "doors_passenger": 0,
+      "notes": "Collision bulkhead forward. Heavily stiffened."
+    },
+    {
+      "id": "B",
+      "name": "Bulkhead B",
+      "z": 228.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 0,
+      "doors_passenger": 0,
+      "notes": "Divides No. 1 Hold from No. 2 Hold."
+    },
+    {
+      "id": "C",
+      "name": "Bulkhead C",
+      "z": 207.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 0,
+      "doors_passenger": 1,
+      "notes": "Divides No. 2 Hold from No. 3 Hold. Lower portion doubled as cofferdam."
+    },
+    {
+      "id": "D",
+      "name": "Bulkhead D",
+      "z": 186.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 1,
+      "notes": "Divides No. 3 Hold from Boiler Room 6. Double door protection via bunker passage."
+    },
+    {
+      "id": "E",
+      "name": "Bulkhead E",
+      "z": 168.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 1,
+      "notes": "Divides Boiler Room 6 from Boiler Room 5. WT door at 9ft bunker passage."
+    },
+    {
+      "id": "F",
+      "name": "Bulkhead F",
+      "z": 149.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 2,
+      "notes": "Divides Boiler Room 5 from Boiler Room 4. WT door at 9ft bunker passage."
+    },
+    {
+      "id": "G",
+      "name": "Bulkhead G",
+      "z": 130.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 1,
+      "notes": "Divides Boiler Room 4 from Boiler Room 3. WT door at 9ft bunker passage."
+    },
+    {
+      "id": "H",
+      "name": "Bulkhead H",
+      "z": 111.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 2,
+      "notes": "Divides Boiler Room 3 from Boiler Room 2. WT door at 9ft bunker passage."
+    },
+    {
+      "id": "J",
+      "name": "Bulkhead J",
+      "z": 92.0,
+      "extends_to": "E_Deck",
+      "y_top": 12.4,
+      "doors_tt": 1,
+      "doors_passenger": 2,
+      "notes": "Divides Boiler Room 2 from Boiler Room 1. WT door at 9ft bunker passage."
+    },
+    {
+      "id": "K",
+      "name": "Bulkhead K",
+      "z": 75.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 1,
+      "doors_passenger": 2,
+      "notes": "Divides Boiler Room 1 from Reciprocating Engine Room. WT drop door."
+    },
+    {
+      "id": "L",
+      "name": "Bulkhead L",
+      "z": 52.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 1,
+      "doors_passenger": 2,
+      "notes": "Divides Reciprocating Engine Room from Turbine Engine Room."
+    },
+    {
+      "id": "M",
+      "name": "Bulkhead M",
+      "z": 35.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 1,
+      "doors_passenger": 3,
+      "notes": "Divides Turbine Room from Electric Dynamo Room."
+    },
+    {
+      "id": "N",
+      "name": "Bulkhead N",
+      "z": 20.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 1,
+      "doors_passenger": 4,
+      "notes": "Divides Electric Dynamo Room from No. 4 Hold / Shaft Tunnels."
+    },
+    {
+      "id": "O",
+      "name": "Bulkhead O",
+      "z": 8.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 1,
+      "doors_passenger": 1,
+      "notes": "Divides No. 4 Hold from No. 5 Hold."
+    },
+    {
+      "id": "P",
+      "name": "Bulkhead P",
+      "z": -2.0,
+      "extends_to": "D_Deck",
+      "y_top": 15.3,
+      "doors_tt": 0,
+      "doors_passenger": 0,
+      "notes": "Afterpeak bulkhead around rudder stock."
+    }
+  ],
+  "compartments": [
+    {
+      "index": 1,
+      "name": "Forepeak Tank",
+      "z_min": 245.0,
+      "z_max": 263.85,
+      "type": "peak_ballast"
+    },
+    {
+      "index": 2,
+      "name": "No. 1 Hold",
+      "z_min": 228.0,
+      "z_max": 245.0,
+      "type": "cargo_hold"
+    },
+    {
+      "index": 3,
+      "name": "No. 2 Hold",
+      "z_min": 207.0,
+      "z_max": 228.0,
+      "type": "cargo_hold"
+    },
+    {
+      "index": 4,
+      "name": "No. 3 Hold (Mail & Specie)",
+      "z_min": 186.0,
+      "z_max": 207.0,
+      "type": "cargo_hold"
+    },
+    {
+      "index": 5,
+      "name": "Boiler Room No. 6",
+      "z_min": 168.0,
+      "z_max": 186.0,
+      "type": "boiler_room",
+      "boilers": 4,
+      "furnaces": 24
+    },
+    {
+      "index": 6,
+      "name": "Boiler Room No. 5",
+      "z_min": 149.0,
+      "z_max": 168.0,
+      "type": "boiler_room",
+      "boilers": 5,
+      "furnaces": 30
+    },
+    {
+      "index": 7,
+      "name": "Boiler Room No. 4",
+      "z_min": 130.0,
+      "z_max": 149.0,
+      "type": "boiler_room",
+      "boilers": 5,
+      "furnaces": 30
+    },
+    {
+      "index": 8,
+      "name": "Boiler Room No. 3",
+      "z_min": 111.0,
+      "z_max": 130.0,
+      "type": "boiler_room",
+      "boilers": 5,
+      "furnaces": 30
+    },
+    {
+      "index": 9,
+      "name": "Boiler Room No. 2",
+      "z_min": 92.0,
+      "z_max": 111.0,
+      "type": "boiler_room",
+      "boilers": 5,
+      "furnaces": 30
+    },
+    {
+      "index": 10,
+      "name": "Boiler Room No. 1",
+      "z_min": 75.0,
+      "z_max": 92.0,
+      "type": "boiler_room",
+      "boilers": 5,
+      "furnaces": 15,
+      "single_ended": true
+    },
+    {
+      "index": 11,
+      "name": "Reciprocating Engine Room",
+      "z_min": 52.0,
+      "z_max": 75.0,
+      "type": "engine_room"
+    },
+    {
+      "index": 12,
+      "name": "Turbine Engine Room",
+      "z_min": 35.0,
+      "z_max": 52.0,
+      "type": "engine_room"
+    },
+    {
+      "index": 13,
+      "name": "Electric Dynamo Room",
+      "z_min": 20.0,
+      "z_max": 35.0,
+      "type": "machinery_room"
+    },
+    {
+      "index": 14,
+      "name": "No. 4 Hold / Tunnel Space",
+      "z_min": 8.0,
+      "z_max": 20.0,
+      "type": "cargo_tunnel"
+    },
+    {
+      "index": 15,
+      "name": "No. 5 Hold",
+      "z_min": -2.0,
+      "z_max": 8.0,
+      "type": "cargo_hold"
+    },
+    {
+      "index": 16,
+      "name": "Afterpeak Tank / Steering Gear",
+      "z_min": -5.21,
+      "z_max": -2.0,
+      "type": "peak_steering"
+    }
+  ],
+  "funnels": [
+    {
+      "number": 1,
+      "z_centre": 175.5,
+      "boiler_uptake": "Boiler Room 6 & 5",
+      "is_dummy": false,
+      "smoke_emitter": true,
+      "whistle": true,
+      "rake_rad": 0.08314123188844122
+    },
+    {
+      "number": 2,
+      "z_centre": 148.0,
+      "boiler_uptake": "Boiler Room 4 & 3",
+      "is_dummy": false,
+      "smoke_emitter": true,
+      "whistle": true,
+      "rake_rad": 0.08314123188844122
+    },
+    {
+      "number": 3,
+      "z_centre": 120.5,
+      "boiler_uptake": "Boiler Room 2 & 1",
+      "is_dummy": false,
+      "smoke_emitter": true,
+      "whistle": false,
+      "rake_rad": 0.08314123188844122
+    },
+    {
+      "number": 4,
+      "z_centre": 93.0,
+      "boiler_uptake": null,
+      "is_dummy": true,
+      "smoke_emitter": false,
+      "whistle": false,
+      "rake_rad": 0.08314123188844122,
+      "internal_use": "Ventilation for turbine casing, first class smoking room fireplace flue, galleys"
+    }
+  ],
+  "lifeboats": [
+    {
+      "id": "No.1",
+      "side": "Starboard",
+      "type": "Emergency Cutter",
+      "length_ft": 25,
+      "capacity": 40,
+      "z": 195.0,
+      "swung_out": true
+    },
+    {
+      "id": "Collapsible_C",
+      "side": "Starboard",
+      "type": "Engelhardt Collapsible",
+      "length_ft": 27.5,
+      "capacity": 47,
+      "z": 190.0,
+      "deck": "Boat_Deck"
+    },
+    {
+      "id": "No.3",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 180.0
+    },
+    {
+      "id": "No.5",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 168.0
+    },
+    {
+      "id": "No.7",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 156.0
+    },
+    {
+      "id": "No.9",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 105.0
+    },
+    {
+      "id": "No.11",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 93.0
+    },
+    {
+      "id": "No.13",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 81.0
+    },
+    {
+      "id": "No.15",
+      "side": "Starboard",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 69.0
+    },
+    {
+      "id": "No.2",
+      "side": "Port",
+      "type": "Emergency Cutter",
+      "length_ft": 25,
+      "capacity": 40,
+      "z": 195.0,
+      "swung_out": true
+    },
+    {
+      "id": "Collapsible_D",
+      "side": "Port",
+      "type": "Engelhardt Collapsible",
+      "length_ft": 27.5,
+      "capacity": 47,
+      "z": 190.0,
+      "deck": "Boat_Deck"
+    },
+    {
+      "id": "No.4",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 180.0
+    },
+    {
+      "id": "No.6",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 168.0
+    },
+    {
+      "id": "No.8",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 156.0
+    },
+    {
+      "id": "No.10",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 105.0
+    },
+    {
+      "id": "No.12",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 93.0
+    },
+    {
+      "id": "No.14",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 81.0
+    },
+    {
+      "id": "No.16",
+      "side": "Port",
+      "type": "Class A Wooden",
+      "length_ft": 30,
+      "capacity": 65,
+      "z": 69.0
+    },
+    {
+      "id": "Collapsible_A",
+      "side": "Starboard",
+      "type": "Engelhardt Collapsible",
+      "length_ft": 27.5,
+      "capacity": 47,
+      "z": 198.0,
+      "deck": "Officers_Roof"
+    },
+    {
+      "id": "Collapsible_B",
+      "side": "Port",
+      "type": "Engelhardt Collapsible",
+      "length_ft": 27.5,
+      "capacity": 47,
+      "z": 198.0,
+      "deck": "Officers_Roof"
+    }
+  ],
+  "propulsion": {
+    "wing_propellers": {
+      "count": 2,
+      "blades": 3,
+      "diameter_ft": 23.5,
+      "material": "Manganese bronze",
+      "drive": "Reciprocating 4-crank triple expansion engines",
+      "ihp_total": 30000,
+      "rpm_normal": 75
+    },
+    "centre_propeller": {
+      "count": 1,
+      "blades": 3,
+      "diameter_ft": 16.5,
+      "material": "Manganese bronze",
+      "drive": "Parsons low-pressure reaction turbine",
+      "shp_total": 16000,
+      "rpm_normal": 165
+    },
+    "boilers": {
+      "total_boilers": 29,
+      "double_ended": 24,
+      "single_ended": 5,
+      "total_furnaces": 159,
+      "working_pressure_psi": 215,
+      "heating_surface_sqft": 144142,
+      "grate_surface_sqft": 3466
+    },
+    "dynamos": {
+      "main_sets": 4,
+      "capacity_kw_each": 400,
+      "voltage_dc": 100,
+      "emergency_sets": 2,
+      "emergency_capacity_kw": 30
+    }
+  }
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "feature": "Length Overall (LOA)",
+    "documented_value": "882 ft 9 in (269.06 m)",
+    "source": "Harland & Wolff Yard Specification No. 401 & Builder Certificate",
+    "source_date": "1911-1912",
+    "confidence": "High (Primary shipyard record)",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None. Commonly misquoted as 852.5 ft due to confusion with registered length."
+  },
+  {
+    "feature": "Registered Length (B.o.T.)",
+    "documented_value": "852.5 ft (259.84 m) stem at waterline to rudder stock",
+    "source": "1912 British Wreck Commissioner Inquiry Report (botRepTitanic.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High (Official statutory measurement)",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Moulded Beam / Extreme Breadth",
+    "documented_value": "92 ft 6 in (28.19 m) extreme breadth over plating; 92 ft 0 in moulded",
+    "source": "1912 British Inquiry Report & H&W Midship Section Plan",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Full Load Displacement",
+    "documented_value": "52,310 Imperial tons at 34 ft 7 in draught",
+    "source": "1912 British Inquiry Report (botRepTitanic.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Gross Register Tonnage (GRT)",
+    "documented_value": "46,328 Register Tons (4,632,800 cu ft internal enclosed volume)",
+    "source": "Board of Trade Certificate & 1912 British Inquiry Report",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "1,004 GRT larger than Olympic due to enclosed A-deck forward screen and B-deck staterooms."
+  },
+  {
+    "feature": "Watertight Bulkheads & Compartments",
+    "documented_value": "15 transverse watertight bulkheads (A to P) forming 16 watertight compartments",
+    "source": "1912 British Inquiry Report (botRepWC.php & botRepStructure.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Bulkhead Heights",
+    "documented_value": "Bulkhead A to C deck; B to D deck; C through J to E deck; K through P to D deck",
+    "source": "1912 British Inquiry Report (botRepWC.php Table)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None. Bulkhead D double protected with bunker passage door."
+  },
+  {
+    "feature": "Cellular Double Bottom",
+    "documented_value": "Depth 63 in (5 ft 3 in) amidships, 78 in (6 ft 6 in) under reciprocating engines; 17 transverse divisions; floor on every frame",
+    "source": "1912 British Inquiry Report (botRepStructure.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Bilge Keels",
+    "documented_value": "Length ~300 ft, depth 25 in along the turn of the bilge amidships port and starboard",
+    "source": "1912 British Inquiry Report (botRepStructure.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Watertight Doors (Inner Bottom / Machinery)",
+    "documented_value": "12 vertical sliding drop doors (cast iron, heavily ribbed) with friction cataracts, magnetic release from bridge, local hand lever, and bilge float release. Drop time 25-30 sec.",
+    "source": "1912 British Inquiry Report (botRepStructure.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "Warning bell rang prior to and during closure."
+  },
+  {
+    "feature": "Boiler Plant",
+    "documented_value": "29 Scotch marine boilers: 24 double-ended (15ft 9in dia x 20ft long, 6 furnaces each) + 5 single-ended (15ft 9in dia x 11ft 9in long, 3 furnaces each) = 159 furnaces total. Working pressure 215 psi. Natural draught assisted by stokehold forced fans.",
+    "source": "1912 British Inquiry Report (botRepMach.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Reciprocating Main Propulsion Engines",
+    "documented_value": "Two 4-cylinder, 4-crank triple expansion engines. HP: 54 in, IP: 84 in, two LP: 97 in dia. Stroke 75 in (6 ft 3 in). Stephenson link motion, Brown steam/hydraulic reversing engine. ~15,000 IHP each at 75 RPM.",
+    "source": "1912 British Inquiry Report (botRepMach.php) & The Shipbuilder 1911",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Low-Pressure Reaction Turbine",
+    "documented_value": "One Parsons LP reaction turbine driving centre shaft, ~16,000 SHP at 165 RPM. Powered by exhaust steam from reciprocating LP cylinders. Ahead only. Equipped with automatic governor and changeover valves diverting exhaust to condensers when maneuvering/reversing.",
+    "source": "1912 British Inquiry Report (botRepMach.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Propellers",
+    "documented_value": "Three propellers: Port & starboard wing screws: 3 blades, 23 ft 6 in diameter, cast bronze, outward-turning. Centre screw: 3 blades, 16 ft 6 in diameter, manganese bronze.",
+    "source": "Harland & Wolff Engineering Order Book 401 & 2022 Magellan Digital Wreck Scan",
+    "source_date": "1912 / 2022",
+    "confidence": "High (Corrects 4-blade Olympic misconception)",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "Confirmed 3-blade centre screw on Titanic."
+  },
+  {
+    "feature": "Funnels & Smoke Behavior",
+    "documented_value": "Four funnels, rake 1 in 12 (1 inch per foot aft). Oval section 24 ft 6 in x 19 ft. Height 175 ft above keel. Funnels 1, 2, 3 boiler exhausts (volumetric coal smoke). Funnel 4 dummy casing for turbine room casing exhaust, galley flue, smoking room ventilation (NO coal smoke). Livery: White Star buff with black top (casing ~75% buff, 25% black).",
+    "source": "H&W Rigging Plan 401 & The Shipbuilder 1911 & Inquiry Report",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Electrical Plant",
+    "documented_value": "Four 400 kW, 100V DC dynamos driven by vertical 3-crank compound steam engines in separate compartment abaft turbine room. Two 30 kW emergency dynamos on D deck. 10,000 incandescent lamps (tantalum & carbon). 562 electric heaters. 153 motors.",
+    "source": "1912 British Inquiry Report (botRepElec.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Lifeboats and Davits",
+    "documented_value": "20 boats total: 14 Class A wooden lifeboats (30 ft x 9 ft x 4 ft, 65 persons each); 2 emergency cutters (25 ft x 7 ft 2 in, 40 persons each, swung outboard); 4 Engelhardt collapsible lifeboats (27 ft 5 in x 8 ft, 47 persons each: A & B on officers roof, C & D abreast cutters). 16 sets of Welin double-acting quadrant davits.",
+    "source": "1912 British Inquiry Report (botRepAccomo.php & botRepTitanic.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "A-Deck Enclosed Screen",
+    "documented_value": "192 ft long enclosed steel weather screen on port and starboard forward A deck with 42 large sliding rectangular glazed windows.",
+    "source": "H&W Drawing Office alterations 1912 & Father Browne photographs",
+    "source_date": "1912-04-10",
+    "confidence": "High (Major visible difference from Olympic)",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "B-Deck Staterooms & Caf\u00e9 Parisien",
+    "documented_value": "97 First Class staterooms flush to hull, two Parlour Suites (B51/53/55 and B52/54/56) with private 50-ft promenades; Caf\u00e9 Parisien on starboard aft; \u00c0 la Carte Restaurant expanded.",
+    "source": "RMG First Class Deck Plan (March 1912) & 1912 Inquiry Report",
+    "source_date": "1912-03-20",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Forward Grand Staircase",
+    "documented_value": "Descending Boat Deck to E Deck. English oak boiserie, Louis XIV style, wrought iron balustrades with gilt bronze leaf scroll medallions, Honour & Glory Crowning Time clock carving on A Deck landing, wrought iron and cut glass dome with 50-light crystal chandelier.",
+    "source": "Welch photographs 1911-1912 & RMG plans & The Shipbuilder 1911",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Turkish Baths and Swimming Pool",
+    "documented_value": "Located on F Deck starboard side. Moorish / Arabian style cooling room with glazed ceramic arabesque tiles, teak recliners, brass lamps. Heated saltwater swimming bath (30 ft x 14 ft) lined with turquoise tiles.",
+    "source": "Welch photographs & 1912 British Inquiry Report (botRepAccomo.php)",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Gymnasium",
+    "documented_value": "Located Boat Deck starboard side abaft forward entrance. Fitted with electric horse exerciser, electric camel exerciser, cycling machines with distance dials, rowing machine, punch bag, wall weights. Paneling white painted v-groove wood, parquet floor.",
+    "source": "Father Browne photographs & Welch photographs & 1912 Inquiry",
+    "source_date": "1912-04-10",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Masts and Crow's Nest",
+    "documented_value": "Two steel pole masts with teak poles. Fore mast 208 ft above keel with steel lookout crow's nest at 95 ft above waterline; internal access ladder with openings at C deck and crow's nest. Main mast 202 ft above keel.",
+    "source": "H&W Rigging Plan 401 & 1912 Inquiry Report (botRepStructure.php)",
+    "source_date": "1911-1912",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  },
+  {
+    "feature": "Marconi Wireless Installation",
+    "documented_value": "5 kW rotary spark gap transmitter and magnetic detector. Silent soundproof room, operator cabin, 4-wire T-aerial suspended between mast spreaders.",
+    "source": "1912 British Inquiry Report (botRepElec.php) & Marconi Archives",
+    "source_date": "1912-07-30",
+    "confidence": "High",
+    "proxy_type": "Titanic-specific",
+    "unresolved_questions": "None."
+  }
+]
